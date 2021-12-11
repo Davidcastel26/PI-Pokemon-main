@@ -31,6 +31,10 @@ module.exports = (sequelize) => {
     weight:{
       type: DataTypes.INTEGER
     }
+  },{
+    timestamps: true,
+    createdAt: 'Created',
+    updatedAt: 'Updated'
   })
 };
 
@@ -38,14 +42,15 @@ module.exports = (sequelize) => {
 /*
 
 [ ] Pokemon con las siguientes propiedades:
---------ID (Número de Pokemon) * : No puede ser un ID de un pokemon ya existente en la API pokeapi
---------Nombre *
---------Vida  (CALLED AS HP)
---------Fuerza
---------Defensa
--------Velocidad
+------ID (Número de Pokemon) * : No puede ser un ID de un pokemon ya existente en la API pokeapi
+------Nombre *
+------Vida  (CALLED AS HP)
+------Fuerza
+------Defensa
+------Velocidad
 ------Altura
 ------Peso
+
 [ ] Tipo con las siguientes propiedades:
 ID
 Nombre
