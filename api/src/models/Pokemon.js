@@ -51,8 +51,5 @@ module.exports = (sequelize) => {
 ------Altura
 ------Peso
 
-[ ] Tipo con las siguientes propiedades:
-ID
-Nombre
 
 */
