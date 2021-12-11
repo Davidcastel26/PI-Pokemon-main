@@ -11,7 +11,11 @@ module.exports = (sequelize) =>{
             type: DataTypes.STRING,
             allowNull: false
         }
-    })
+    },{
+        timestamps: true,
+        createdAt: 'Created',
+        updatedAt: 'Updated'
+      })
 }
 
 /**
