@@ -7,6 +7,9 @@ router.get('/', (req, res, next) => {
     .then((Pokemon )=>{
         res.send(Pokemon)
     })
+    .catch((error) => {
+        next(error)
+    })
 })
 
 router.get('/:id', async(req, res, next) =>{
@@ -15,7 +18,7 @@ router.get('/:id', async(req, res, next) =>{
         const onePokemon = await Pokemon.findByPk(id);
         res.json( onePokemon? onePokemon: 'Sorry, that pokemon does not exist yet')
     } catch (error) {  
-        console.log(error);
+        next(error);
     }
 })
 
@@ -34,7 +37,7 @@ router.post('/', async (req, res, next) => {
         })
         res.send(newPokemon)
     } catch (error) {
-        console.log(error);
+        next(error);
     }
 })
 
