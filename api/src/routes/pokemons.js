@@ -10,22 +10,32 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', async(req, res, next) =>{
-    
+    const {id} = req.params;
+    try {
+        const onePokemon = await Pokemon.findByPk(id);
+        res.json( onePokemon? onePokemon: 'Sorry, that pokemon does not exist yet')
+    } catch (error) {  
+        console.log(error);
+    }
 })
 
 router.post('/', async (req, res, next) => {
     const { name, hp, attack, defense, speed, height, weight, img} = req.body;
-    const newPokemon = await Pokemon.create({
-        name,
-        hp,
-        attack,
-        defense,
-        speed,
-        height,
-        weight,
-        img
-    })
-    res.send(newPokemon)
+    try {
+        const newPokemon = await Pokemon.create({
+            name,
+            hp,
+            attack,
+            defense,
+            speed,
+            height,
+            weight,
+            img
+        })
+        res.send(newPokemon)
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 router.put('/', (req, res, next) => {
