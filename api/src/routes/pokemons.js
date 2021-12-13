@@ -16,7 +16,7 @@ router.get('/:id', async(req, res, next) =>{
     const {id} = req.params;
     try {
         const onePokemon = await Pokemon.findByPk(id);
-        res.json( onePokemon? onePokemon: 'Sorry, that pokemon does not exist yet')
+        res.json( onePokemon ? onePokemon: 'Sorry, that pokemon does not exist yet')
     } catch (error) {  
         next(error);
     }
@@ -35,9 +35,20 @@ router.post('/', async (req, res, next) => {
             weight,
             img
         })
-        res.send(newPokemon)
+        res.status(201).send(newPokemon)
     } catch (error) {
         next(error);
+    }
+})
+
+router.post('/:pokemonId/type/:typeId', async (req, res, next) =>{
+    const {pokemonId, typeId} = req.params; 
+    try {
+        const pokemon = await Pokemon.findByPk(pokemonId)
+        await pokemon.addType(typeId)
+        res.send(200)
+    } catch (error) {
+        next(error)
     }
 })
 
