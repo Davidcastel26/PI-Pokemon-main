@@ -4,13 +4,14 @@ const { Pokemon, Type } = require('../db');
 const router = Router();
 
 router.get('/', (req, res, next) => {
-    const PokemonFromApi = axios.get(`https://pokeapi.co/api/v2/pokemon`)
+    const PokemonFromApi = axios.get(`https://pokeapi.co/api/v2/pokemon`);
+    // tengo un array para que me guarde las url de cada pokemon
+    // let urlData = []
+    
     const PokemonFromDb = Pokemon.findAll({
         include: Type
     })
 
-
-    
     Promise.all([
         PokemonFromApi,
         PokemonFromDb
@@ -18,21 +19,49 @@ router.get('/', (req, res, next) => {
     .then((answer) => {
 
         const [PokemonFromApi, PokemonFromDb] = answer;
-        
-        // const [data] = PokemonFromApi;
 
-        let filteredPokemonApi = PokemonFromApi.data.results.map((poke)=>{
-            return{
-                name:poke.name
+        //extraigo el url y lo pusheo al array y con el axios entro para extaer la info de esa api
+        // let filteredPokemonApi = PokemonFromApi.data.results.map(( poke )=> {
+        //     urlData.push(
+        //         //  axios.get(poke.url)
+        //           poke.url
+        //     )
+        // })
+
+        let datosPokemos = []
+        let data = PokemonFromApi.data.results.map((poke)=> {
+            let config = {
+                method: 'get',
+                url: poke.url,
+                headers : {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }
             }
+        let response = axios(config);
+        datosPokemos.push(response)
+        console.log(response.data);
         })
-        let allPokemons = [...filteredPokemonApi, ...PokemonFromDb]
+
+        // console.log(urlData);
+        console.log(datosPokemos);
+
+        const resApi_order = data.map( (poke) => {
+            return ( {
+                id: poke.id
+            })
+        })
+        console.log(resApi_order);
+
+        let allPokemons = [...resApi_order, ...PokemonFromDb]
         // console.log(PokemonFromApi);
         // console.log(PokemonFromDb);
         res.send(allPokemons)
 
     })
 })
+
+// https://pokeapi.co/api/v2/pokemon/:id
 
 router.get('/:id', async(req, res, next) =>{
     const {id} = req.params;
