@@ -7,19 +7,15 @@ router.get('/', (req, res, next) => {
     const PokemonFromApi = axios.get(`https://pokeapi.co/api/v2/pokemon`);
     // tengo un array para que me guarde las url de cada pokemon
     // let urlData = []
-    
     const PokemonFromDb = Pokemon.findAll({
         include: Type
     })
-
     Promise.all([
         PokemonFromApi,
         PokemonFromDb
     ])
     .then((answer) => {
-
         const [PokemonFromApi, PokemonFromDb] = answer;
-
         //extraigo el url y lo pusheo al array y con el axios entro para extaer la info de esa api
         // let filteredPokemonApi = PokemonFromApi.data.results.map(( poke )=> {
         //     urlData.push(
@@ -42,17 +38,14 @@ router.get('/', (req, res, next) => {
         datosPokemos.push(response)
         console.log(response.data);
         })
-
         // console.log(urlData);
-        console.log(datosPokemos);
-
-        const resApi_order = data.map( (poke) => {
+        // console.log(datosPokemos);
+        const resApi_order = datosPokemos.map( (poke) => {
             return ( {
                 id: poke.id
             })
         })
         console.log(resApi_order);
-
         let allPokemons = [...resApi_order, ...PokemonFromDb]
         // console.log(PokemonFromApi);
         // console.log(PokemonFromDb);
