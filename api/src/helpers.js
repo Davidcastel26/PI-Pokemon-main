@@ -10,13 +10,18 @@ const getPokemonFromApi = async () => {
             info.push(axios.get('https://pokeapi.co/api/v2/pokemon/' + i));
         }
         return Promise.all(info).then((response) => {
-            const pokemones = response.map((info) => {
+            const pokemones = response.map((details) => {
                 return (poke = {
-                    name: info.data.name,
-                    id: info.data.id,
-                    img: info.data.sprites.other.dream_world.front_default,
-                    types: info.data.types.map((e) => e.type.name),
-                    attack: info.data.stats[1].base_stat,
+                    name: details.data.name,
+                    id: details.data.id,
+                    img: details.data.sprites.other.home.front_default,
+                    types: details.data.types.map((e) => e.type.name),
+                    attack: details.data.stats[1].base_stat,
+                    height: details.data.height,
+                    weight: details.data.weight,
+                    hp: details.data.stats[0].base_stat,
+                    defense: details.data.stats[2].base_stat,
+                    speed: details.data.stats[5].base_stat,
                 });
             });
             return pokemones;
@@ -73,10 +78,13 @@ const getAllthePokemons = async(req,res,next)=>{
 
 
 const getPokemonById = async(req, res, next) =>{
-    const {id} = req.params;
+    const {id} = req.params.id;
+    let onePokemon;
     try {
-        const onePokemon = await Pokemon.findByPk(id);
-        res.json( onePokemon ? onePokemon: 'Sorry, that pokemon does not exist yet')
+        if(typeof id === 'string' && id.length > 7){
+            onePokemon = await Pokemon.findByPk(id);
+            res.json( onePokemon ? onePokemon: 'Sorry, that pokemon does not exist yet')
+        } 
     } catch (error) {  
         next(error);
     }
