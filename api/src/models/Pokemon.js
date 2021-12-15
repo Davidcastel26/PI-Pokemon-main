@@ -15,7 +15,8 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     hp:{
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     attack:{
       type: DataTypes.INTEGER
@@ -33,7 +34,13 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER
     },
     img:{
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    createdInDb:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
     }
   },{
     timestamps: true,
