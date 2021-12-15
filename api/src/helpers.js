@@ -1,18 +1,31 @@
 // const {Router} = require('express');
 const axios = require('axios')
+const { response } = require('har-validator')
 const { Pokemon, Type } = require('./db')
 
 const getAllthePokemons = async(req, res, next) => {
-    const PokemonFromApi = axios.get(`https://pokeapi.co/api/v2/pokemon`).then(
-        (answer =>{ console.log(answer)})
-    );
+    const PokemonFromApi = axios.get(`https://pokeapi.co/api/v2/pokemon`)
+    
     // tengo un array para que me guarde las url de cada pokemon
     // let urlData = []
     // const { results } = PokemonFromApi;
     // console.log(PokemonFromApi);
     
+
+
+const PokemonFromDb = Pokemon.findAll({
+    include: Type
+})
+
+Promise.all([
+    PokemonFromApi,
+    PokemonFromDb
+])
+.then((answer) => {
+    const [PokemonFromApi, PokemonFromDb] = answer;
+    
     let datosPokemos = []
-    const info = await PokemonFromApi.data.results.map(async (poke)=> {
+    const info = PokemonFromApi.data.results.map(async (poke)=> {
         
         let config = {
             method: 'get',
@@ -23,48 +36,41 @@ const getAllthePokemons = async(req, res, next) => {
             }
         }
         
-        let response = await axios(config).then((data)=>{datosPokemos.push(data)})
+        let response = await axios(config)
+        // .then((data)=>{datosPokemos.push(data)})
+        .then( (responseFromApi) => {
+            console.log(responseFromApi.data.forms[0]);
+            
+            
+            for (const poke in responseFromApi.data) {
+                datosPokemos.push({
+                    poke
+                })
+            }
+            // const 
+            // console.log(responseFromApi.data.typeof())
+            // console.log(resApi_order);
         
-        // console.log(response.id);
-    })
-
-    const PokemonFromDb = Pokemon.findAll({
-        include: Type
-    })
-
-    Promise.all([
-        datosPokemos,
-        PokemonFromDb
-    ])
-    .then((answer) => {
-        const [datosPokemos, PokemonFromDb] = answer;
-        //extraigo el url y lo pusheo al array y con el axios entro para extaer la info de esa api
-        // let filteredPokemonApi = PokemonFromApi.data.results.map(( poke )=> {
-        //     urlData.push(
-        //         //  axios.get(poke.url)
-        //           poke.url
-        //     )
-        // })
-
- 
-        // console.log(urlData);
-        // console.log(result);
-        // console.log(datosPokemos);
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+        // console.log(response)
+     }   
+    )
         
-        
-        const resApi_order = datosPokemos.map( (poke) => {
-            return ( {
-                id: poke.id
-            })
-        })  
+        // console.log(response.id)
+        // console.log(response);
+    
+      console.log(datosPokemos);
             
 
-        console.log(resApi_order);
+    // console.log(resApi_order);
 
-        let allPokemons = [...resApi_order, ...PokemonFromDb]
-        // console.log(PokemonFromApi);
+    let allPokemons = [...PokemonFromDb ,...datosPokemos]
+        // console.log(PokemonFromApi );
         // console.log(PokemonFromDb);
-        res.send(allPokemons)
+    res.send(allPokemons)
 
     })
 }
@@ -126,3 +132,15 @@ module.exports = {
     deletePokemon,
     upgratePokemon
 }
+
+
+/*
+//extraigo el url y lo pusheo al array y con el axios entro para extaer la info de esa api
+        // let filteredPokemonApi = PokemonFromApi.data.results.map(( poke )=> {
+        //     urlData.push(
+        //         //  axios.get(poke.url)
+        //           poke.url
+        //     )
+        // })
+
+*/
