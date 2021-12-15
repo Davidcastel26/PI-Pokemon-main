@@ -5,8 +5,8 @@ const {
         getAllthePokemons, 
         createAPokemon,
         createRelation,
-        deletePokemon,
-        upgratePokemon} = require('../helpers');
+        /*deletePokemon,
+upgratePokemon*/} = require('../helpers');
 
 router.get('/', getAllthePokemons)
 
@@ -16,11 +16,11 @@ router.get('/:id', getPokemonById)
 router.post('/', createAPokemon)
 
 router.post('/:pokemonId/type/:typeId', createRelation )
-
+/*
 router.put('/',upgratePokemon )
 
 router.delete('/', deletePokemon)
-
+*/
 
 module.exports = router;
 
