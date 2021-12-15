@@ -1,79 +1,76 @@
 // const {Router} = require('express');
 const axios = require('axios')
-const { response } = require('har-validator')
+// const { response } = require('har-validator')
 const { Pokemon, Type } = require('./db')
 
-const getAllthePokemons = async(req, res, next) => {
-    const PokemonFromApi = axios.get(`https://pokeapi.co/api/v2/pokemon`)
-    
-    // tengo un array para que me guarde las url de cada pokemon
-    // let urlData = []
-    // const { results } = PokemonFromApi;
-    // console.log(PokemonFromApi);
-    
-
-
-const PokemonFromDb = Pokemon.findAll({
-    include: Type
-})
-
-Promise.all([
-    PokemonFromApi,
-    PokemonFromDb
-])
-.then((answer) => {
-    const [PokemonFromApi, PokemonFromDb] = answer;
-    
-    let datosPokemos = []
-    const info = PokemonFromApi.data.results.map(async (poke)=> {
-        
-        let config = {
-            method: 'get',
-            url: poke.url,
-            headers : {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
+const getPokemonFromApi = async () => {
+    try {
+        let info = [];
+        for (let i = 1; i <= 40; i++) {
+            info.push(axios.get('https://pokeapi.co/api/v2/pokemon/' + i));
         }
+        return Promise.all(info).then((response) => {
+            const pokemones = response.map((info) => {
+                return (poke = {
+                    name: info.data.name,
+                    id: info.data.id,
+                    img: info.data.sprites.other.dream_world.front_default,
+                    types: info.data.types.map((e) => e.type.name),
+                    attack: info.data.stats[1].base_stat,
+                });
+            });
+            return pokemones;
+        });
         
-        let response = await axios(config)
-        // .then((data)=>{datosPokemos.push(data)})
-        .then( (responseFromApi) => {
-            console.log(responseFromApi.data.forms[0]);
-            
-            
-            for (const poke in responseFromApi.data) {
-                datosPokemos.push({
-                    poke
-                })
-            }
-            // const 
-            // console.log(responseFromApi.data.typeof())
-            // console.log(resApi_order);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const getPokemonFromDb = async() => {
+    try {
         
+        let poke = Pokemon.findAll({
+            include: {
+                model: Type,
+            },
+            attributes: ['name','img','attack',"defense",'hp','speed' ],
         })
-        .catch(err =>{
-            console.log(err);
-        })
-        // console.log(response)
-     }   
-    )
-        
-        // console.log(response.id)
-        // console.log(response);
-    
-      console.log(datosPokemos);
-            
+        return poke
 
-    // console.log(resApi_order);
-
-    let allPokemons = [...PokemonFromDb ,...datosPokemos]
-        // console.log(PokemonFromApi );
-        // console.log(PokemonFromDb);
-    res.send(allPokemons)
-
-    })
+    } catch (error) {
+        console.log(error);
+    }
 }
+
+const getAllPokemonsTogether = async () =>{
+    const apiInfo = await getPokemonFromApi();
+    const dbInfo = await getPokemonFromDb();
+    // const infoTotal = apiInfo.concat(dbInfo);
+    const infoTotal = [...apiInfo, ...dbInfo]
+    return infoTotal 
+}
+
+const getAllthePokemons = async(req,res,next)=>{
+    const name = req.query.name
+    
+    try {
+
+         let pokemonTotal = await getAllPokemonsTogether();
+         if(name){
+             let pokemonName = await pokemonTotal.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+            pokemonName.length ? 
+            res.send(pokemonName) :
+            res.status(404).send('Pokemon dont found');
+         }else{
+            res.send(pokemonTotal)
+         }
+
+     } catch (error) {
+         next(error)
+     }
+}
+
 
 const getPokemonById = async(req, res, next) =>{
     const {id} = req.params;
@@ -135,6 +132,14 @@ module.exports = {
 
 
 /*
+    // tengo un array para que me guarde las url de cada pokemon
+    // let urlData = []
+    // const { results } = PokemonFromApi;
+    // console.log(PokemonFromApi);
+    
+
+
+
 //extraigo el url y lo pusheo al array y con el axios entro para extaer la info de esa api
         // let filteredPokemonApi = PokemonFromApi.data.results.map(( poke )=> {
         //     urlData.push(
