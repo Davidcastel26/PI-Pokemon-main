@@ -5,7 +5,7 @@ const getCharacter = () =>{
         let json = await axios(`http://localhost:3001/api/pokemon`);
 
         return dispatch({
-            type:'GET_CHARACTER',
+            type:'GET_CHARACTERS',
             payload: json.data
         })
 
