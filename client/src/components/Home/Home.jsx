@@ -2,7 +2,7 @@
 import React, 
      { useState,
        useEffect,
-       Fragment, 
+       Fragment,  
        } from 'react';
 import { useDispatch,
          useSelector } from 'react-redux';
@@ -15,8 +15,15 @@ import BtnsFilter from './BtnsFilter';
 
 
 const Home = () =>{
+    
     const dispatch = useDispatch();
     const allCharacters = useSelector((state) => state.characters)
+    
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
+    const indexOfLastPokemon = currentPage * pokemonsPerPage // 
+    const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
+    const currentPokemons = allCharacters.slice(indexOfFirstPokemon, indexOfLastPokemon )
 
     useEffect(()=>{
         dispatch(getCharacter())
@@ -41,7 +48,7 @@ const Home = () =>{
                         return(
                             <Fragment>
                                 <Link to ={"/home/" + e.id}>
-                                    <Card name={e.name} img={e.img} nickname={e.id} />
+                                    <Card name={e.name} img={e.img} type={e.type} strength={e.strength} hp={e.hp} defense={e.defense} speed={e.speed} heigth={e.heigth} weight={e.weight} />
                                 </Link>
                             </Fragment>
                         )

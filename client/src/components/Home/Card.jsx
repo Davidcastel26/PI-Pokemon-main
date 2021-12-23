@@ -5,14 +5,14 @@ const Card = ({img, name, type, id, hp, strength, defense, speed, heigth, weight
         <div>
             <h1>{name}</h1>
             <img src={img} alt="img not found" width='250px' height='200px' />
-            <h3>{type}</h3>
+            <h3> type {type}</h3>
             <h3>{id}</h3>
-            <h5>{hp}</h5>
-            <h5>{strength}</h5>
-            <h5>{defense}</h5>
-            <h5>{speed}</h5>
-            <h6>{heigth}</h6>
-            <h6>{weight}</h6>
+            <h5>hp {hp}</h5>
+            <h5>st {strength}</h5>
+            <h5>de {defense}</h5>
+            <h5>sp {speed}</h5>
+            <h6>he {heigth}</h6>
+            <h6>we {weight}</h6>
         </div>
     )
 }
