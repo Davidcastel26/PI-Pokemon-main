@@ -9,6 +9,13 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 characters:action.payload
             }
+        case 'FILTER_BY_STATUS':
+            const allPokemons = state.characters
+            const statusFilter = action.payload === 'All' ? allPokemons : allPokemons.filter(el => el.status === action.payload)
+            return{
+               ...state,
+               characters: statusFilter
+            }
         default:
             return {...state}
     }
