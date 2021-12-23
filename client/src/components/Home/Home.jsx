@@ -25,6 +25,10 @@ const Home = () =>{
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
     const currentPokemons = allCharacters.slice(indexOfFirstPokemon, indexOfLastPokemon )
 
+    const pages = (pageNumber) =>{
+        setCurrentPage(pageNumber)
+    }
+
     useEffect(()=>{
         dispatch(getCharacter())
     },[dispatch])
