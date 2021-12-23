@@ -54,7 +54,7 @@ const Home = () =>{
                 />
                 <BtnsFilter characters={allCharacters}/>
                 {
-                    allCharacters?.map(e => {
+                    currentPokemons?.map(e => {
                         return(
                             <Fragment>
                                 <Link to ={"/home/" + e.id}>
