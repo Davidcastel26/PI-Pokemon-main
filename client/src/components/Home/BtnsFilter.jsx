@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Card from './Card'
 
-function BtnsFilter({allCharacters}) {
+function BtnsFilter({handleFilterStatus}) {
     return (
         <div>   
                 {/* showing pokemos byt asc and desc by strength */}
@@ -16,7 +16,7 @@ function BtnsFilter({allCharacters}) {
                     <option value="desc" > Descend </option>
                 </select>
                 {/* showing pokemon by existing or by created */}
-                <select name="" id="">
+                <select name="" id="" onChange={(e)=>handleFilterStatus(e)} >
                     <option value="All" > All </option>
                     <option value="Created" > Created </option>
                     <option value="Existing" > Existing </option>
