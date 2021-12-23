@@ -12,6 +12,7 @@ import {Link} from 'react-router-dom';
 //components 
 import Card from './Card';
 import BtnsFilter from './BtnsFilter';
+import Pages from './Pages';
 
 
 const Home = () =>{
@@ -46,6 +47,11 @@ const Home = () =>{
                 reload all the pokemons
             </button>
             <div>
+                <Pages 
+                    pokemonsPerPage={pokemonsPerPage}
+                    allCharacters={allCharacters.length}
+                    pages={pages}
+                />
                 <BtnsFilter characters={allCharacters}/>
                 {
                     allCharacters?.map(e => {
