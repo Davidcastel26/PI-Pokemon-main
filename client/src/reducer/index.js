@@ -9,7 +9,8 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 characters:action.payload
             }
-        break;
+        default:
+            return {...state}
     }
 }
 

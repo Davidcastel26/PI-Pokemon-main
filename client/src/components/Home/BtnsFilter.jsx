@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
+import Card from './Card'
 
-function BtnsFilter() {
+function BtnsFilter({allCharacters}) {
     return (
         <div>   
                 {/* showing pokemos byt asc and desc by strength */}
@@ -28,6 +30,8 @@ function BtnsFilter() {
                     <option value="">ground</option>
                     <option value="">rock</option>
                 </select> */}
+                
+                
         </div>
     )
 }

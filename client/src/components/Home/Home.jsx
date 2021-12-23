@@ -1,7 +1,9 @@
 //hooks
 import React, 
      { useState,
-       useEffect } from 'react';
+       useEffect,
+       Fragment, 
+       } from 'react';
 import { useDispatch,
          useSelector } from 'react-redux';
 import getCharacter from '../../actions';
@@ -9,7 +11,7 @@ import {Link} from 'react-router-dom';
 
 //components 
 import Card from './Card';
-// import BtnsFilter from './BtnsFilter';
+import BtnsFilter from './BtnsFilter';
 
 
 const Home = () =>{
@@ -18,7 +20,7 @@ const Home = () =>{
 
     useEffect(()=>{
         dispatch(getCharacter())
-    },[])
+    },[dispatch])
 
     const handleClick = ( e ) =>{
         e.preventDefault();
@@ -32,26 +34,17 @@ const Home = () =>{
             <button onClick={e=> handleClick(e)}>
                 reload all the pokemons
             </button>
-            {/* <BtnsFilter/> */}
             <div>
-            <select name="" id="">
-                    <option value="asc" > Ascendent </option>
-                    <option value="desc" > Descend </option>
-                </select>
-                {/* showing pokemons by asc and desc by name */}
-                <select name="" id="">
-                    <option value="asc" > Ascendent </option>
-                    <option value="desc" > Descend </option>
-                </select>
-                {/* showing pokemon by existing or by created */}
-                <select name="" id="">
-                    <option value="all" > All </option>
-                    <option value="created" > Created </option>
-                    <option value="existing" > Existing </option>
-                </select>
+                <BtnsFilter characters={allCharacters}/>
                 {
-                    allCharacters && allCharacters.map(e => {
-                        <Card name={e.name} img={e.img} nickname={e.id} />
+                    allCharacters?.map(e => {
+                        return(
+                            <Fragment>
+                                <Link to ={"/home/" + e.id}>
+                                    <Card name={e.name} img={e.img} nickname={e.id} />
+                                </Link>
+                            </Fragment>
+                        )
                     })
                 }
             </div>
@@ -60,3 +53,35 @@ const Home = () =>{
 }
 
 export default Home;
+
+
+/*
+  <div>
+            <select name="" id="">
+                    <option value="asc" > Ascendent </option>
+                    <option value="desc" > Descend </option>
+                </select>
+                {/* showing pokemons by asc and desc by name 
+                <select name="" id="">
+                    <option value="asc" > Ascendent </option>
+                    <option value="desc" > Descend </option>
+                </select>
+                {/* showing pokemon by existing or by created 
+                <select name="" id="">
+                    <option value="all" > All </option>
+                    <option value="created" > Created </option>
+                    <option value="existing" > Existing </option>
+                </select>
+                {
+                    allCharacters?.map(e => {
+                        return(
+                            <Fragment>
+                                <Link to ={"/home/" + e.id}>
+                                    <Card name={e.name} img={e.img} nickname={e.id} />
+                                </Link>
+                            </Fragment>
+                        )
+                    })
+                }
+            </div>
+ */
