@@ -17,9 +17,9 @@ function BtnsFilter({allCharacters}) {
                 </select>
                 {/* showing pokemon by existing or by created */}
                 <select name="" id="">
-                    <option value="all" > All </option>
-                    <option value="created" > Created </option>
-                    <option value="existing" > Existing </option>
+                    <option value="All" > All </option>
+                    <option value="Created" > Created </option>
+                    <option value="Existing" > Existing </option>
                 </select>
                 {/* showing pokemons by type  */}
                 {/* <select>
