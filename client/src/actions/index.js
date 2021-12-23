@@ -12,4 +12,11 @@ const getCharacter = () =>{
     }
 }
 
+export const filterCharactersByStatus = (payload) =>{
+    return {
+        type:'FILTER_BY_STATUS',
+        payload
+    }
+}
+
 export default getCharacter;
