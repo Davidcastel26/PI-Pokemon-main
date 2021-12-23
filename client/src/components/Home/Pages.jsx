@@ -9,9 +9,18 @@ const Pages = ({pokemonsPerPage, allCharacters, pages}) => {
     }
 
     return (
-        <div>
-             
-        </div>
+        <nav>
+            <ul className='pages'>
+                { pageNumbers && pageNumbers.map(number => (
+                    <li className='number' key={number}>
+                        <a onClick={() => pages(number)}>
+                            {number}
+                        </a>
+                    </li>
+                    ))
+                }
+            </ul>
+        </nav>
     )
 }
 
