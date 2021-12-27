@@ -6,7 +6,7 @@ function BtnsFilter({handleFilterCreOrExist}) {
     return (
         <div>   
                 {/* showing pokemos byt asc and desc by strength */}
-                <select  >
+                <select  onChange={e => filterPokemonByStrength(e)}>
                     <option value="asc" > Ascendent </option>
                     <option value="desc" > Descend </option>
                 </select >
