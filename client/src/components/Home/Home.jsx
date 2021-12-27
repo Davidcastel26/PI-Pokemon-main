@@ -11,7 +11,6 @@ import {Link} from 'react-router-dom';
 import getCharacter, 
         {
          filterPokemonByCreatedOrExisted,
-         filterPokemonByType
         } from '../../actions';
 
 //components 
@@ -46,7 +45,7 @@ const Home = () =>{
 
     const handleFilterCreOrExist = (e) =>{
         dispatch(filterPokemonByCreatedOrExisted(e.target.value))
-    }
+    } 
 
     return(
         <div>
@@ -62,7 +61,7 @@ const Home = () =>{
                     pages={pages}
                 />
                 <BtnsFilter 
-                    filterCreatedOrExisting={handleFilterCreOrExist}
+                    handleFilterCreOrExist={handleFilterCreOrExist}
                 />
                 {
                     currentPokemons?.map(e => {
