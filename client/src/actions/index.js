@@ -12,6 +12,10 @@ const getCharacter = () =>{
     }
 }
 
+export const getCharacterById = () => {
+    console.log('holi');
+}
+
 export const filterPokemonByType = (payload) =>{
     return {
         type:'FILTER_BY_TYPE',
