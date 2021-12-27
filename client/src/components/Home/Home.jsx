@@ -8,7 +8,11 @@ import { useDispatch,
          useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import getCharacter, {filterCharactersByStatus} from '../../actions';
+import getCharacter, 
+        {
+         filterPokemonByCreatedOrExisted,
+         filterPokemonByType
+        } from '../../actions';
 
 //components 
 import Card from './Card';
@@ -40,8 +44,8 @@ const Home = () =>{
         dispatch(getCharacter)
     }
 
-    const handleFilterStatus = (e) =>{
-        dispatch(filterCharactersByStatus(e.target.value))
+    const handleFilterCreOrExist = (e) =>{
+        dispatch(filterPokemonByCreatedOrExisted(e.target.value))
     }
 
     return(
@@ -58,7 +62,7 @@ const Home = () =>{
                     pages={pages}
                 />
                 <BtnsFilter 
-                    filterCreatedOrExisting={handleFilterStatus}
+                    filterCreatedOrExisting={handleFilterCreOrExist}
                 />
                 {
                     currentPokemons?.map(e => {
