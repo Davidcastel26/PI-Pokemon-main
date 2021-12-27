@@ -20,6 +20,7 @@ export const filterPokemonByType = (payload) =>{
 }
 
 export const filterPokemonByCreatedOrExisted = (payload) => {
+    console.log(payload);
     return{
         type: 'FILTER_BY_CREATEDOREXISTED',
         payload
@@ -27,6 +28,7 @@ export const filterPokemonByCreatedOrExisted = (payload) => {
 }
 
 export const filterPokemonByName = payload => {
+    console.log(payload);
     return {
         type:'FILTER_BY_NAME',
         payload
