@@ -1,22 +1,22 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import Card from './Card'
+import {filterPokemonByName, filterPokemonByStrength} from '../../actions'
 
 function BtnsFilter({handleFilterCreOrExist}) {
     return (
         <div>   
                 {/* showing pokemos byt asc and desc by strength */}
-                <select onChange={(e)=>handleFilterCreOrExist(e)} >
+                <select  >
                     <option value="asc" > Ascendent </option>
                     <option value="desc" > Descend </option>
-                </select>
+                </select >
                 {/* showing pokemons by asc and desc by name */}
-                <select name="" id="">
+                <select onChange={(e)=>filterPokemonByName(e)} >
                     <option value="asc" > Ascendent </option>
                     <option value="desc" > Descend </option>
                 </select>
                 {/* showing pokemon by existing or by created */}
-                <select name="" id="" >
+                <select onChange={(e)=>handleFilterCreOrExist(e)}>
                     <option value="All" > All </option>
                     <option value="Created" > Created </option>
                     <option value="Existing" > Existing </option>
