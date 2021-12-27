@@ -44,6 +44,7 @@ const rootReducer = (state = initialState, action) =>{
 
             return{
                 ...state,
+                characters: sortByNmae
             }
         default:
             return {...state}
