@@ -11,7 +11,8 @@ import {Link} from 'react-router-dom';
 import getCharacter, 
         {
          filterPokemonByCreatedOrExisted,
-         filterPokemonByStrength
+         filterPokemonByStrength,
+         filterPokemonByName
         } from '../../actions';
 
 //components 
@@ -52,6 +53,10 @@ const Home = () =>{
         dispatch(filterPokemonByStrength(e.target.value))
     }
 
+    const handlePokemonByName = e =>{
+        dispatch(filterPokemonByName(e.target.value))
+    }
+
     const funcionExe = () =>{
         let varialbeXDpapa =currentPokemons.filter(ele => ele.id.toString().length < 7)
         return varialbeXDpapa
@@ -74,6 +79,7 @@ const Home = () =>{
                 <BtnsFilter 
                     handleFilterCreOrExist={handleFilterCreOrExist}
                     handlePokemonAttack={handlePokemonAttack}
+                    handlePokemonByName={handlePokemonByName}
                 />  
 
                 
