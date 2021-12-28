@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import React /*,{ Fragment }*/ from 'react'
+// import { Link } from 'react-router-dom'
 import {filterPokemonByName, filterPokemonByStrength} from '../../actions'
 
 function BtnsFilter({handleFilterCreOrExist}) {
     return (
         <div>   
                 {/* showing pokemos byt asc and desc by strength */}
-                <select  onChange={e => filterPokemonByStrength(e)}>
-                    <option value="asc" > Ascendent </option>
-                    <option value="desc" > Descend </option>
+                <select  onChange={ (e) => filterPokemonByStrength(e)}>
+                    <option value="lessProwerfull" > Ascendent </option>
+                    <option value="morePowerfull" > Descend </option>
                 </select >
                 {/* showing pokemons by asc and desc by name */}
                 <select onChange={(e)=>filterPokemonByName(e)} >
