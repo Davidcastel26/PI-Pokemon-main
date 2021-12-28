@@ -1,12 +1,12 @@
 import React /*,{ Fragment }*/ from 'react'
 // import { Link } from 'react-router-dom'
-import {filterPokemonByName, filterPokemonByStrength} from '../../actions'
+import {filterPokemonByName} from '../../actions'
 
-function BtnsFilter({handleFilterCreOrExist}) {
+function BtnsFilter({handleFilterCreOrExist,handlePokemonAttack}) {
     return (
         <div>   
                 {/* showing pokemos byt asc and desc by strength */}
-                <select  onChange={ (e) => filterPokemonByStrength(e)}>
+                <select  onChange={ (e) => handlePokemonAttack(e)}>
                     <option value="lessProwerfull" > Ascendent </option>
                     <option value="morePowerfull" > Descend </option>
                 </select >
