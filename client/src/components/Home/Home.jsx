@@ -47,6 +47,12 @@ const Home = () =>{
         dispatch(filterPokemonByCreatedOrExisted(e.target.value))
     } 
 
+    const funcionExe = () =>{
+        let varialbeXDpapa =currentPokemons.filter(ele => ele.id.toString().length < 7)
+        return varialbeXDpapa
+    }
+    console.log(funcionExe());
+    console.log(currentPokemons);
     return(
         <div>
             <Link to='/pokemon'>Create Pokemon</Link>
@@ -62,13 +68,16 @@ const Home = () =>{
                 />
                 <BtnsFilter 
                     handleFilterCreOrExist={handleFilterCreOrExist}
-                />
+                />  
+
+                
+
                 {
                     currentPokemons?.map(e => {
                         return(
-                            <Fragment>
-                                <Link to ={"/home/" + e.id}>
-                                    <Card name={e.name} img={e.img} type={e.type} strength={e.strength} hp={e.hp} defense={e.defense} speed={e.speed} heigth={e.heigth} weight={e.weight} />
+                            <Fragment key={e.id}>
+                                <Link to ={"/home/" + e.id} key={e.id}>
+                                    <Card name={e.name} img={e.img} type={e.type} attack={e.attack} hp={e.hp} defense={e.defense} speed={e.speed} heigth={e.heigth} weight={e.weight} />
                                 </Link>
                             </Fragment>
                         )
