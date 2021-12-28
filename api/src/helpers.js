@@ -50,7 +50,7 @@ const getPokemonFromDb = async() => {
                 model: Type,
             },
             //attributes are part from our pokemon (check the database to see whats contains)
-            attributes: ['name','img','attack',"defense",'hp','speed','height','weight' ],
+            attributes: ['id','name','img','attack',"defense",'hp','speed','height','weight' ],
         })
         return poke
 
