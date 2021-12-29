@@ -25,7 +25,7 @@ const Home = () =>{
     
     const dispatch = useDispatch();
     const allCharacters = useSelector((state) => state.characters)
-    
+    const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
     const indexOfLastPokemon = currentPage * pokemonsPerPage // 
@@ -49,20 +49,26 @@ const Home = () =>{
         dispatch(filterPokemonByCreatedOrExisted(e.target.value))
     } 
 
-    const handlePokemonAttack = e => {
+    const handlePokemonAttack = (e) => {
+        e.preventDefault();
         dispatch(filterPokemonByStrength(e.target.value))
+        setCurrentPage(1);
+        setOrder(`Order ${e.target.value}`)
     }
 
-    const handlePokemonByName = e =>{
+    const handlePokemonByName = (e) =>{
+        e.preventDefault();
         dispatch(filterPokemonByName(e.target.value))
+        setCurrentPage(1);
+        setOrder(`Order ${e.target.value}`)
     }
 
     const funcionExe = () =>{
-        let varialbeXDpapa =currentPokemons.filter(ele => ele.id.toString().length < 7)
+        let varialbeXDpapa =currentPokemons.map(ele => ele.attack)
         return varialbeXDpapa
     }
-    console.log(funcionExe());
-    console.log(currentPokemons);
+    // console.log(funcionExe());
+    // console.log(currentPokemons);
     return(
         <div>
             <Link to='/pokemon'>Create Pokemon</Link>
