@@ -10,12 +10,14 @@ const SearchBar = () => {
     const handleInputChange = e => {
         e.preventDefault();
         setName(e.target.value)
-        console.log( name );
+        // console.log( name );
     }
 
     const handleClick = e =>{
         e.preventDefault();
-        dispatch(getNamePokemon(name))
+        dispatch(getNamePokemon(name));
+        // reset value (don't forget to set a value into the input)
+        setName('');
     }
 
     return (
@@ -23,11 +25,12 @@ const SearchBar = () => {
             <input 
                 type="text"
                 placeholder='Search' 
+                value={name}
                 onChange={e => handleInputChange(e)}
             />
             <button 
                 type='submit'
-                onClick={e => handleClick(e)}> Search s</button>
+                onClick={e => handleClick(e)}> Searchs</button>
         </div>
     )
 }
