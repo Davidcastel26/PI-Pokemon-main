@@ -20,6 +20,12 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 AllCopyPokemons : action.payload
             }
+        case 'GET_NAME_POKEMON':
+            return{
+                ...state,
+                characters: action.payload
+            }
+        // this is the reducer to get sac or desc by attack-------------------
         case 'FILTER_BY_STRENGTH':
             // const statusFilter = action.payload === 'All' ? allPokemons : allPokemons.filter(el => el.attack === action.payload)
             var sortByStrnght;
@@ -50,6 +56,7 @@ const rootReducer = (state = initialState, action) =>{
                characters: sortByStrnght
 
             }
+        // this is the reducer to get sac or desc by created or existed-------------------
         case 'FILTER_BY_CREATEDOREXISTED':
             let filterCE;
 
@@ -68,6 +75,7 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 characters : action.payload === 'All' ? state.characters : filterCE
             }
+        // this is the reducer to get sac or desc by name-------------------
         case 'FILTER_BY_NAME':
             var sortByNmae;
             
