@@ -7,27 +7,29 @@ import React,
 import { useDispatch,
          useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
-
+// importing all the funcs from actions REDUX
 import getCharacter, 
         {
          filterPokemonByCreatedOrExisted,
          filterPokemonByStrength,
          filterPokemonByName
         } from '../../actions';
-
-//components 
+//importing all the components 
 import Card from './Card';
 import BtnsFilter from './BtnsFilter';
 import Pages from './Pages';
-
+import SearchBar from '../SearchBar/SearchBar';
 
 const Home = () =>{
     
+    //hooks
     const dispatch = useDispatch();
     const allCharacters = useSelector((state) => state.characters)
     const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
+
+
     const indexOfLastPokemon = currentPage * pokemonsPerPage // 
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
     const currentPokemons = allCharacters.slice(indexOfFirstPokemon, indexOfLastPokemon )
@@ -73,10 +75,8 @@ const Home = () =>{
         <div>
             <Link to='/pokemon'>Create Pokemon</Link>
             <h1>Pokemons</h1>
-            <button onClick={e=> handleClick(e)}>
-                reload all the pokemons
-            </button>
             <div>
+                <SearchBar/>
                 <Pages 
                     pokemonsPerPage={pokemonsPerPage}
                     allCharacters={allCharacters.length}
@@ -87,9 +87,9 @@ const Home = () =>{
                     handlePokemonAttack={handlePokemonAttack}
                     handlePokemonByName={handlePokemonByName}
                 />  
-
-                
-
+                <button onClick={e=> handleClick(e)}>
+                    reload all the pokemons
+                </button>
                 {
                     currentPokemons?.map(e => {
                         return(
