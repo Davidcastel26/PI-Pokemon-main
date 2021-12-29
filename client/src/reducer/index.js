@@ -23,25 +23,28 @@ const rootReducer = (state = initialState, action) =>{
         case 'FILTER_BY_STRENGTH':
             // const statusFilter = action.payload === 'All' ? allPokemons : allPokemons.filter(el => el.attack === action.payload)
             var sortByStrnght;
-            
-            switch(action.payload){
-                case 'lessProwerfull':
-                    sortByStrnght = state.characters.sort((a,b) => {
-                        if(a.attack > b.attack) return 1;
-                        if(b.attack > a.attack) return -1;
-                        return 0
-                    })
-                break;
-                case 'morePowerfull':
-                    sortByStrnght = state.characters.sort((a,b) => {
-                        if(a.attack < b.attack) return -1
-                        return 0
-                    })
-                break;
-                default:
-                    console.log('sort type undefined');
-                break;
+
+            if(action.payload === 'morePowerfull'){
+                console.log(state.characters);
+
+                sortByStrnght = state.characters.sort((a,b) => {
+                    if(a.attack > b.attack) return 1; /* console.log(a.attack);*/ 
+                    if(b.attack > a.attack) return -1;
+                    return 0
+                })
+            }else if(action.payload === 'lessProwerfull'){
+                console.log(state.characters);
+                sortByStrnght = state.characters.sort((a,b) => {
+                    if(a.attack < b.attack) return -1
+                    return 0
+                })
             }
+
+
+            // if(action.payload === 'morePowerfull'){
+            //     sortByStrnght = state.AllCopyPokemons.filter(ele => ele.id.length > 8)
+            // }
+
             return{
                ...state,
                characters: sortByStrnght
@@ -58,7 +61,7 @@ const rootReducer = (state = initialState, action) =>{
                     filterCE = state.AllCopyPokemons.filter(ele => ele.id.toString().length < 7)
                 break;
                 default:
-                    return state
+                    return {...state}
             }
 
             return{
