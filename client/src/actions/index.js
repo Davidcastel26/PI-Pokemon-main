@@ -12,6 +12,20 @@ const getCharacter = () =>{
     }
 }
 
+export const getNamePokemon = (payload) => {
+    return async function (dispatch) {
+        try {
+            const json = await axios.get(`http://localhost:3001/api/pokemon?name=${payload}`)
+            return dispatch({
+                type:'GET_NAME_POKEMON',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error);   
+        }
+    }
+}
+
 export const getCharacterById = () => {
     console.log('holi');
 }
