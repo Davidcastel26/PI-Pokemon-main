@@ -10,8 +10,9 @@ function BtnsFilter(
         <div>   
                 {/* showing pokemos byt asc and desc by strength */}
                 <select  onChange={ (e) => handlePokemonAttack(e)}>
-                    <option value="lessProwerfull" > Ascendent </option>
-                    <option value="morePowerfull" > Descend </option>
+                    <option hidden>attack</option>
+                    <option value= "morePowerfull"> Ascendent </option>
+                    <option value="lessProwerfull" > Descend </option>
                 </select >
                 {/* showing pokemons by asc and desc by name */}
                 <select onChange={(e)=>handlePokemonByName(e)} >
