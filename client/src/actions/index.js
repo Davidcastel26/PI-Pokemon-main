@@ -17,7 +17,7 @@ export const getCharacterById = () => {
 }
 
 export const filterPokemonByType = (payload) =>{
-    console.log(payload);
+    // console.log(payload);
     return {
         type:'FILTER_BY_TYPE',
         payload
@@ -25,7 +25,7 @@ export const filterPokemonByType = (payload) =>{
 }
 
 export const filterPokemonByCreatedOrExisted = (payload) => {
-    console.log(payload);
+    // console.log(payload);
     return{
         type: 'FILTER_BY_CREATEDOREXISTED',
         payload
@@ -33,7 +33,7 @@ export const filterPokemonByCreatedOrExisted = (payload) => {
 }
 
 export const filterPokemonByName = payload => {
-    console.log(payload);
+    // console.log(payload);
     return {
         type:'FILTER_BY_NAME',
         payload
@@ -41,7 +41,7 @@ export const filterPokemonByName = payload => {
 }
 
 export const filterPokemonByStrength = (payload) =>{
-    console.log(payload);
+    // console.log(payload);
     return{
         type: 'FILTER_BY_STRENGTH',
         payload
