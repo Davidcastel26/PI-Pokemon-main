@@ -9,6 +9,7 @@ import { postPokemon, getPokemonByType } from '../../actions'
 const CharacterCreate = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const [input, setInput] = useState({
         name:"",
         hp: 1,
@@ -40,6 +41,25 @@ const CharacterCreate = () => {
             ...input,
             types: [...input.types, e.target.value]
         })
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log(input);
+        dispatch(postPokemon(input))
+        alert('AWE! Pokemon has been created');
+        setInput({
+            name:"",
+            hp: 1,
+            attack: 1,
+            defense:1,
+            speed:1,
+            height:1,
+            weight:1,
+            img:"",
+            types:[]
+        })
+        navigate.push('./home')
     }
 
     return (
@@ -95,7 +115,7 @@ const CharacterCreate = () => {
                         </li>
                     </ul>
                 </div>
-                <button type='submit' > Create </button>
+                <button type='submit' onClick={e => handleSubmit(e)} > Create </button>
             </form>
         </div>
     )
