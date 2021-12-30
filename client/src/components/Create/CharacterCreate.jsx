@@ -60,7 +60,7 @@ const CharacterCreate = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(input);
+        // console.log(input);
         dispatch(postPokemon(input))
         alert('AWE! Pokemon has been created');
         setInput({
@@ -75,6 +75,13 @@ const CharacterCreate = () => {
             types:[]
         })
         navigate('/home')
+    }
+
+    const handleDelete = (e) => {
+         setInput({
+             ...input,
+             types: input.types.filter(ele => ele !== e)
+         })
     }
 
     return (
@@ -137,9 +144,9 @@ const CharacterCreate = () => {
                     <ul>
                         <li>
                             {input.types.map(e => 
-                                    <div>
-                                        <p>{e}</p>
-                                        
+                                    <div key={e}>
+                                        <p >{e}</p>
+                                        <button onClick={()=> handleDelete(e)}>x</button>
                                     </div>
                                 )
                             }
