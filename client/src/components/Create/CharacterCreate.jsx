@@ -25,6 +25,9 @@ const CharacterCreate = () => {
         dispatch(getPokemonByType())
     },[]);
 
+    const types = useSelector(state => state.pokemonsTypes)
+    
+    // -------------HANDLERS ---------------------------
     const handleChnage = (e) => {
         setInput({
             ...input,
@@ -32,7 +35,12 @@ const CharacterCreate = () => {
         })
     }
 
-    const types = useSelector(state => state.pokemonsTypes)
+    const handleSelector = e => {
+        setInput({
+            ...input,
+            types: [...input.types, e.target.value]
+        })
+    }
 
     return (
         <div>
@@ -74,14 +82,18 @@ const CharacterCreate = () => {
                 </div>
                 <div>
                     <label htmlFor="">Type</label>
-                    <input type="text"  value={input.types} name='types' onChange={handleChnage}/>
-                </div>
-                <div>
-                    <select name="" id="">
+                    <select name="" onChange={e=> handleSelector(e)} >
                         {types.map(typ => (
-                            <option value={typ.name}> {typ.name} </option>
+                            <option key={typ.id} value={typ.name}> 
+                                {typ.name} 
+                            </option>
                         ))}
                     </select>
+                    <ul>
+                        <li>
+                            {input.types.map(e => e + " ,")}
+                        </li>
+                    </ul>
                 </div>
                 <button type='submit' > Create </button>
             </form>
