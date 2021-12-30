@@ -73,7 +73,7 @@ const Home = () =>{
     // console.log(currentPokemons);
     return(
         <div>
-            <Link to='/pokemon'>Create Pokemon</Link>
+            <Link to='/pokemons'>Create Pokemon</Link>
             <h1>Pokemons</h1>
             <div>
                 <SearchBar/>
@@ -95,7 +95,7 @@ const Home = () =>{
                         return(
                             <Fragment key={e.id}>
                                 <Link to ={"/home/" + e.id} key={e.id}>
-                                    <Card name={e.name} img={e.img} type={e.type} attack={e.attack} hp={e.hp} defense={e.defense} speed={e.speed} heigth={e.heigth} weight={e.weight} />
+                                    <Card name={e.name} img={e.img ? e.img : <img src="https://www.pngfind.com/pngs/m/59-590892_pokemon-silhouettes-guess-the-pokemon-pikachu-hd-png.png"/>} type={e.type} attack={e.attack} hp={e.hp} defense={e.defense} speed={e.speed} heigth={e.heigth} weight={e.weight} />
                                 </Link>
                             </Fragment>
                         )
