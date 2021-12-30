@@ -41,6 +41,18 @@ export const filterPokemonByType = () =>{
     }
 }
 
+export const postPokemon = (payload) => {
+    const posted = async() => {
+        try {
+            const response = await axios.post(`http://localhost:3001/api/pokemon`, payload)
+            return response
+        } catch (error) {
+            
+        }
+    }
+    return posted
+  }
+
 export const filterPokemonByCreatedOrExisted = (payload) => {
     // console.log(payload);
     return{
