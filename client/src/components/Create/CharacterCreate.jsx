@@ -25,7 +25,7 @@ const CharacterCreate = () => {
         dispatch(getPokemonByType())
     },[]);
 
-    const types = useSelector(state => state.types)
+    const types = useSelector(state => state.pokemonsTypes)
 
     return (
         <div>
@@ -62,15 +62,24 @@ const CharacterCreate = () => {
                     <input type="text"  value={input.weight} name='weight'/>
                 </div>
                 <div>
-                    {/* img  */}
+                    <label htmlFor="">Image</label>
+                    <input type="text" value={input.img} name='img' />
                 </div>
                 <div>
                     <label htmlFor="">Type</label>
                     <input type="text"  value={input.types} name='types'/>
                 </div>
+                <div>
+                    <select name="" id="">
+                        {types.map(typ => (
+                            <option value={typ.name}> {typ.name} </option>
+                        ))}
+                    </select>
+                </div>
+                
             </form>
         </div>
     )
 }
 
-export default CharacterCreate
+export default CharacterCreate;
