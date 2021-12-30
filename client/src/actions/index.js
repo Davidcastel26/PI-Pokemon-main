@@ -26,15 +26,18 @@ export const getNamePokemon = (payload) => {
     }
 }
 
-export const getCharacterById = () => {
-    console.log('holi');
-}
-
-export const filterPokemonByType = (payload) =>{
+export const filterPokemonByType = () =>{
     // console.log(payload);
-    return {
-        type:'FILTER_BY_TYPE',
-        payload
+    return async function(dispatch) {
+        try {
+            const type = await axios.get(`http://localhost:3001/api/types`)
+            return dispatch({
+                type:'GET_TYPE',
+                payload: type.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
