@@ -25,6 +25,10 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 characters: action.payload
             }
+        case 'POST_POKEMON':
+            return{
+                ...state
+            }
         // this is the reducer to get sac or desc by attack-------------------
         case 'FILTER_BY_STRENGTH':
             // const statusFilter = action.payload === 'All' ? allPokemons : allPokemons.filter(el => el.attack === action.payload)
