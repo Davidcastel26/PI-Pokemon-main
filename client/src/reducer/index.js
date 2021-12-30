@@ -2,7 +2,8 @@ const initialState = {
     characters : [],
     //we are creating a copy so we won't filter into the array already filtered
     AllCopyPokemons : [],
-    pokemonsTypes : []
+    pokemonsTypes : [],
+    detail: []
 }
 
 const rootReducer = (state = initialState, action) =>{
@@ -112,6 +113,11 @@ const rootReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 characters: sortByNmae
+            }
+        case 'GET_DETAILS':
+            return{
+                ...state,
+                detail: action.payload
             }
         default:
             return {...state}
