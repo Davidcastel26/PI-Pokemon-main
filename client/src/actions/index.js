@@ -41,19 +41,19 @@ export const getPokemonByType = () =>{
     }
 }
 
-export const postPokemon = (payload) => {
+export const postPokemon = payload => {
     const posted = async() => {
         try {
             const response = await axios.post(`http://localhost:3001/api/pokemon`, payload)
             return response
         } catch (error) {
-            
+            console.log(error);
         }
     }
     return posted
   }
 
-export const filterPokemonByCreatedOrExisted = (payload) => {
+export const filterPokemonByCreatedOrExisted = ( payload ) => {
     // console.log(payload);
     return{
         type: 'FILTER_BY_CREATEDOREXISTED',
@@ -69,12 +69,27 @@ export const filterPokemonByName = payload => {
     }
 }
 
-export const filterPokemonByStrength = (payload) =>{
+export const filterPokemonByStrength = ( payload ) =>{
     // console.log(payload);
     return{
         type: 'FILTER_BY_STRENGTH',
         payload
     }
+}
+
+export const getDetail =  ( id ) => {
+    const response = async( dispatch ) =>{
+        try {
+            var json =  await axios.get(`http://localhost:3001/api/pokemon/${id}`)
+            return dispatch({
+                type: 'GET_DETAILS',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    return response;
 }
 
 export default getCharacter;
