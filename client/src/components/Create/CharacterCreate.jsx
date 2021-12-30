@@ -9,15 +9,18 @@ import { postPokemon, getPokemonByType } from '../../actions'
 const CharacterCreate = () => {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const types = useSelector(state => state.pokemonsTypes)
+
+    const [errors, setErrors] = useState({})
     const [input, setInput] = useState({
         name:"",
-        hp: 1,
-        attack: 1,
-        defense:1,
-        speed:1,
-        height:1,
-        weight:1,
+        hp: 0,
+        attack: 0,
+        defense:0,
+        speed:0, 
+        height:0,
+        weight:0,
         img:"",
         types:[]
     })
@@ -26,14 +29,26 @@ const CharacterCreate = () => {
         dispatch(getPokemonByType())
     },[]);
 
-    const types = useSelector(state => state.pokemonsTypes)
-    
+    //---------- FORM CONTROLLER ----------------------
+    const validate = input => {
+        let errors = {};
+        if(!input.name){ errors.name = 'A name is needed :/'};
+        // if(!input.hp) { errors.name = 'A HP is needed :/'};
+        if(input.hp < 0){ errors.name = 'A HP should be more than 0 :/'}
+
+        return errors;
+    }
+
     // -------------HANDLERS ---------------------------
     const handleChnage = (e) => {
         setInput({
             ...input,
             [e.target.name] : e.target.value
         })
+        setErrors(validate({
+            ...input,
+            [e.target.name] : e.target.value
+        }))
     }
 
     const handleSelector = e => {
@@ -50,16 +65,16 @@ const CharacterCreate = () => {
         alert('AWE! Pokemon has been created');
         setInput({
             name:"",
-            hp: 1,
-            attack: 1,
-            defense:1,
-            speed:1,
-            height:1,
-            weight:1,
+            hp: 0,
+            attack: 0,
+            defense:0,
+            speed:0, 
+            height:0,
+            weight:0,
             img:"",
             types:[]
         })
-        navigate.push('./home')
+        navigate('/home')
     }
 
     return (
@@ -67,38 +82,48 @@ const CharacterCreate = () => {
             <Link to='/home'><button>Back</button></Link>
             <h1>Start with this adventure</h1>
             <h3>Lets create your own Pokemon</h3>
-            <form action="">
+            <form action="" onSubmit={e => handleSubmit(e)}>
                 <div>
                     <label htmlFor="">Name</label>
-                    <input type="text"  value={input.name} name='name' onChange={handleChnage}/>
+                    <input type="text"  value={input.name} name='name' onChange={e => handleChnage(e)}/>
+                    {!errors.name && (
+                        <p>{errors.name}</p>
+                    )
+                    }
                 </div>
                 <div>
                     <label htmlFor="">HP</label>
-                    <input type="text"  value={input.hp} name='hp' onChange={handleChnage}/>
+                    <input type="text"  value={input.hp} name='hp' onChange={e => handleChnage(e)}/>
+                    {
+                        errors.hp && (
+                            <p>{errors.hp}</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label htmlFor="">Attack</label>
-                    <input type="text"  value={input.attack} name='attack' onChange={handleChnage}/>
+                    <input type="text"  value={input.attack} name='attack' onChange={e => handleChnage(e)}/>
+            
                 </div>
                 <div>
                     <label htmlFor="">Defense</label>
-                    <input type="text"  value={input.defense} name='defense' onChange={handleChnage}/>
+                    <input type="text"  value={input.defense} name='defense' onChange={e => handleChnage(e)}/>
                 </div>
                 <div>
                     <label htmlFor="">Speed</label>
-                    <input type="text"  value={input.speed} name='speed' onChange={handleChnage}/>
+                    <input type="text"  value={input.speed} name='speed' onChange={e => handleChnage(e)}/>
                 </div>
                 <div>
                     <label htmlFor="">Height</label>
-                    <input type="text"  value={input.height} name='height' onChange={handleChnage}/>
+                    <input type="text"  value={input.height} name='height' onChange={e => handleChnage(e)}/>
                 </div>
                 <div>
                     <label htmlFor="">Weight</label>
-                    <input type="text"  value={input.weight} name='weight' onChange={handleChnage}/>
+                    <input type="text"  value={input.weight} name='weight' onChange={e => handleChnage(e)}/>
                 </div>
                 <div>
                     <label htmlFor="">Image</label>
-                    <input type="text" value={input.img} name='img' onChange={handleChnage}/>
+                    <input type="text" value={input.img} name='img' onChange={e => handleChnage(e)}/>
                 </div>
                 <div>
                     <label htmlFor="">Type</label>
@@ -111,11 +136,17 @@ const CharacterCreate = () => {
                     </select>
                     <ul>
                         <li>
-                            {input.types.map(e => e + " ,")}
+                            {input.types.map(e => 
+                                    <div>
+                                        <p>{e}</p>
+                                        
+                                    </div>
+                                )
+                            }
                         </li>
                     </ul>
                 </div>
-                <button type='submit' onClick={e => handleSubmit(e)} > Create </button>
+                <button type='submit' > Create </button>
             </form>
         </div>
     )
