@@ -25,6 +25,13 @@ const CharacterCreate = () => {
         dispatch(getPokemonByType())
     },[]);
 
+    const handleChnage = (e) => {
+        setInput({
+            ...input,
+            [e.target.name] : e.target.value
+        })
+    }
+
     const types = useSelector(state => state.pokemonsTypes)
 
     return (
@@ -35,39 +42,39 @@ const CharacterCreate = () => {
             <form action="">
                 <div>
                     <label htmlFor="">Name</label>
-                    <input type="text"  value={input.name} name='name'/>
+                    <input type="text"  value={input.name} name='name' onChange={handleChnage}/>
                 </div>
                 <div>
                     <label htmlFor="">HP</label>
-                    <input type="text"  value={input.hp} name='hp'/>
+                    <input type="text"  value={input.hp} name='hp' onChange={handleChnage}/>
                 </div>
                 <div>
                     <label htmlFor="">Attack</label>
-                    <input type="text"  value={input.attack} name='attack'/>
+                    <input type="text"  value={input.attack} name='attack' onChange={handleChnage}/>
                 </div>
                 <div>
                     <label htmlFor="">Defense</label>
-                    <input type="text"  value={input.defense} name='defense'/>
+                    <input type="text"  value={input.defense} name='defense' onChange={handleChnage}/>
                 </div>
                 <div>
                     <label htmlFor="">Speed</label>
-                    <input type="text"  value={input.speed} name='speed'/>
+                    <input type="text"  value={input.speed} name='speed' onChange={handleChnage}/>
                 </div>
                 <div>
                     <label htmlFor="">Height</label>
-                    <input type="text"  value={input.height} name='height'/>
+                    <input type="text"  value={input.height} name='height' onChange={handleChnage}/>
                 </div>
                 <div>
                     <label htmlFor="">Weight</label>
-                    <input type="text"  value={input.weight} name='weight'/>
+                    <input type="text"  value={input.weight} name='weight' onChange={handleChnage}/>
                 </div>
                 <div>
                     <label htmlFor="">Image</label>
-                    <input type="text" value={input.img} name='img' />
+                    <input type="text" value={input.img} name='img' onChange={handleChnage}/>
                 </div>
                 <div>
                     <label htmlFor="">Type</label>
-                    <input type="text"  value={input.types} name='types'/>
+                    <input type="text"  value={input.types} name='types' onChange={handleChnage}/>
                 </div>
                 <div>
                     <select name="" id="">
@@ -76,7 +83,7 @@ const CharacterCreate = () => {
                         ))}
                     </select>
                 </div>
-                <button type='submit' >submit</button>
+                <button type='submit' > Create </button>
             </form>
         </div>
     )
