@@ -26,7 +26,7 @@ export const getNamePokemon = (payload) => {
     }
 }
 
-export const filterPokemonByType = () =>{
+export const getPokemonByType = () =>{
     // console.log(payload);
     return async function(dispatch) {
         try {
