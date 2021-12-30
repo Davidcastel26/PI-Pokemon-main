@@ -1,7 +1,8 @@
 const initialState = {
     characters : [],
     //we are creating a copy so we won't filter into the array already filtered
-    AllCopyPokemons : []
+    AllCopyPokemons : [],
+    pokemonsTypes : []
 }
 
 const rootReducer = (state = initialState, action) =>{
@@ -28,6 +29,11 @@ const rootReducer = (state = initialState, action) =>{
         case 'POST_POKEMON':
             return{
                 ...state
+            }
+        case 'GET_TYPE':
+            return {
+                ...state,
+                pokemonsTypes: action.payload
             }
         // this is the reducer to get sac or desc by attack-------------------
         case 'FILTER_BY_STRENGTH':
