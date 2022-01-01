@@ -102,13 +102,44 @@ const getAllthePokemons = async(req,res,next)=>{
 
 
 const getPokemonById = async(req, res, next) =>{
-    const {id} = req.params.id;
+    const {id} = req.params;
     let onePokemon;
     try {
         if(typeof id === 'string' && id.length > 7){
+            //findbypk is = to the sqelize
             onePokemon = await Pokemon.findByPk(id);
             res.json( onePokemon ? onePokemon: 'Sorry, that pokemon does not exist yet')
-        } 
+        } else if ( id.length < 7 ){
+           let pokeInfo = []
+           const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        //    console.log(response);
+           const { data } = await response;
+           //    console.log(data);
+           const newObj = Object.entries(data)
+           // Obj entries will give me all the info as an array
+           // but we do not have with to comparate with
+            // console.log(newObj);
+           pokeInfo.push(Object.fromEntries(newObj))
+           //so we need to use (fromEntries) that will convine all the arrays into the obj
+           console.log(pokeInfo);
+
+           const getinfoFromPokemon = pokeInfo.map(details =>{
+                return (poke = {
+                    name: details.name,
+                    id: details.id,
+                    img: details.sprites.other.home.front_default,
+                    types: details.types.map((e) => e.type.name),
+                    attack: details.stats[1].base_stat,
+                    height: details.height,
+                    weight: details.weight,
+                    hp: details.stats[0].base_stat,
+                    defense: details.stats[2].base_stat,
+                    speed: details.stats[5].base_stat,
+                })
+            })
+            onePokemon = getinfoFromPokemon[0]
+            res.send(onePokemon)
+        }
     } catch (error) {  
         next(error);
     }
