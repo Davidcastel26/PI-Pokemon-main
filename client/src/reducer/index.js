@@ -31,15 +31,25 @@ const rootReducer = (state = initialState, action) =>{
             return{
                 ...state
             }
+        // we are getting the types and creating the func type
         case 'GET_TYPE':
             return {
                 ...state,
                 pokemonsTypes: action.payload
             }
+        case 'TYPE':
+            let copyPoke = state.AllCopyPokemons;
+            let type_filter = action.payload === 'Alls' ? copyPoke : copyPoke.filter(e => e.types.includes(action.payload))
+            
+
+            return{
+                ...state,
+                characters: type_filter
+            }
         // this is the reducer to get sac or desc by attack-------------------
         case 'FILTER_BY_STRENGTH':
             // const statusFilter = action.payload === 'All' ? allPokemons : allPokemons.filter(el => el.attack === action.payload)
-            var sortByStrnght;
+            let sortByStrnght;
 
             if(action.payload === 'morePowerfull'){
                 console.log(state.characters);
@@ -114,6 +124,7 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 characters: sortByNmae
             }
+        // -----------this is the case for the single pages per pokemon------------
         case 'GET_DETAILS':
             return{
                 ...state,

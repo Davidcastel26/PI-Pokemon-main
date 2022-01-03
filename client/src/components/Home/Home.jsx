@@ -12,7 +12,8 @@ import getCharacter,
         {
          filterPokemonByCreatedOrExisted,
          filterPokemonByStrength,
-         filterPokemonByName
+         filterPokemonByName,
+         filterByTypes
         } from '../../actions';
 //importing all the components 
 import Card from './Card';
@@ -65,6 +66,13 @@ const Home = () =>{
         setOrder(`Order ${e.target.value}`)
     }
 
+    const handleType = e => {
+        e.preventDefault();
+        dispatch(filterByTypes(e.target.value))
+        setCurrentPage(1);
+        setOrder(`Order ${e.target.value}`)
+    }
+
     const funcionExe = () =>{
         let varialbeXDpapa =currentPokemons.map(ele => ele.attack)
         return varialbeXDpapa
@@ -86,6 +94,7 @@ const Home = () =>{
                     handleFilterCreOrExist={handleFilterCreOrExist}
                     handlePokemonAttack={handlePokemonAttack}
                     handlePokemonByName={handlePokemonByName}
+                    handleType={handleType}
                 />  
                 <button onClick={e=> handleClick(e)}>
                     reload all the pokemons
@@ -94,7 +103,7 @@ const Home = () =>{
                     currentPokemons?.map(e => {
                         return(
                             <Fragment key={e.id}>
-                                <Link to ={"/home/" + e.id} key={e.id}>
+                                <Link to ={`/home/${e.id}`} key={e.id}>
                                     <Card name={e.name} img={e.img ? e.img : <img src="https://www.pngfind.com/pngs/m/59-590892_pokemon-silhouettes-guess-the-pokemon-pikachu-hd-png.png"/>} type={e.type} attack={e.attack} hp={e.hp} defense={e.defense} speed={e.speed} heigth={e.heigth} weight={e.weight} />
                                 </Link>
                             </Fragment>

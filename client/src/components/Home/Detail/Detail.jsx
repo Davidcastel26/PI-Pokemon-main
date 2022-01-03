@@ -16,8 +16,9 @@ const Detail = () => {
     const myCharacter = useSelector(state => state.detail)
 
     return (
-        <div>
-            { myCharacter.length > 0 ? 
+        <div>   
+            {
+             myCharacter ? 
                 <div>
                     <h1>{myCharacter.name}</h1>
                     <img src={myCharacter.img} alt="" /> 

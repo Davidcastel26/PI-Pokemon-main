@@ -41,6 +41,13 @@ export const getPokemonByType = () =>{
     }
 }
 
+export const filterByTypes = (payload) =>{
+    return {
+        type : 'TYPE',
+        payload 
+    }
+}
+
 export const postPokemon = payload => {
     const posted = async() => {
         try {
@@ -80,7 +87,8 @@ export const filterPokemonByStrength = ( payload ) =>{
 export const getDetail =  ( id ) => {
     const response = async( dispatch ) =>{
         try {
-            var json =  await axios.get(`http://localhost:3001/api/pokemon/${id}`)
+            const json =  await axios.get(`http://localhost:3001/api/pokemon/${id}`)
+            // console.log(json.log);
             return dispatch({
                 type: 'GET_DETAILS',
                 payload: json.data

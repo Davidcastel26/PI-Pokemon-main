@@ -1,11 +1,25 @@
-import React /*,{ Fragment }*/ from 'react'
+import React ,{ /*Fragment */ useEffect }from 'react'
 // import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { getPokemonByType } from '../../actions'
 
 function BtnsFilter(
-    {handleFilterCreOrExist,
+    {
+     handleFilterCreOrExist,
      handlePokemonAttack,
-     handlePokemonByName}
-     ) {
+     handlePokemonByName,
+     handleType
+    }) 
+{   
+
+    const dispatch = useDispatch();
+    
+    useEffect( () =>{
+        dispatch(getPokemonByType())
+    },[] )
+    
+    const ptypes = useSelector(state => state.pokemonsTypes);
+    // console.log(ptypes);
     return (
         <div>   
                 {/* showing pokemos byt asc and desc by strength */}
@@ -22,20 +36,19 @@ function BtnsFilter(
                 </select>
                 {/* showing pokemon by existing or by created */}
                 <select onChange={(e)=>handleFilterCreOrExist(e)}>
-                <option hidden>Pokemons List</option>
+                    <option hidden>Pokemons List</option>
                     <option value="All" > All </option>
                     <option value="Created" > Created </option>
                     <option value="Existing" > Existing </option>
                 </select>
                 {/* showing pokemons by type  */}
-                {/* <select>
-                    <option value="">normal</option>
-                    <option value="">fighting</option>
-                    <option value="">flying</option>
-                    <option value="">poison</option>
-                    <option value="">ground</option>
-                    <option value="">rock</option>
-                </select> */}
+                <select onChange={e => handleType(e)}>
+                    <option hidden>Types</option>
+                    <option value="Alls">All</option>
+                    {ptypes.map( PokeType => (
+                        <option key={PokeType.id} value={PokeType.name} >{PokeType.name}</option>
+                    ))}
+                </select>
                 
                 
         </div>
