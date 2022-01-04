@@ -1,5 +1,43 @@
+.gradient__bg{
+    display: flex;
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+}
+
+.container_1 h1{
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
+
+.container_1 p{
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 27px;
+    color: #40576d;
+    margin-top: 1.5rem;
+}
+
 .container_1 button{
-    padding: 0.5rem 1rem;
-    left: 1153px;
-    top: 55px;
+    background: #5d6aca;
+    color: #fff;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 25px;
+    padding: 0.8rem 2rem;
+    border-radius: 7px;
+    border: 0;
+    outline: none;
+    margin-top: .8rem;
+}
+
+.container_2{
+    
 }
