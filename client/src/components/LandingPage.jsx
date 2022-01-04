@@ -13,8 +13,4 @@ const LandingPage = () => {
     )
 }
 
-LandingPage.propTypes = {
-
-}
-
 export default LandingPage
