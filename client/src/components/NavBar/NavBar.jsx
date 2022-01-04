@@ -14,12 +14,15 @@ const NavBar = () => {
                         <img src={logo} alt="logo" />
                     </Link>
                 </div>
-                <div className='gpt3__navbar-links_logo'>
+                <div className='gpt3__navbar-links_container'>
+                    <Link to ='/'>
+                        <p>Home</p>
+                    </Link>
                     <Link to ='/home'>
-                        <button>HOME</button>
+                        <p>Pokemons</p>
                     </Link>
                     <Link to='/pokemons'>
-                        Create Pokemon
+                      <p>Create Pokemon</p>  
                     </Link>
                 </div>
             </div>
