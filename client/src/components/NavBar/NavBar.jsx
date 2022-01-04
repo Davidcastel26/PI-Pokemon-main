@@ -1,10 +1,28 @@
+import { Link } from 'react-router-dom'
 //--- CSS
 import './navbar.css'
+import {RiMenu3Line, RiCloseLin} from 'react-icons/ri';
+import logo from '../../imgs/logo.svg'
+// BEM -> Block Element Modifier
 
 const NavBar = () => {
     return (
-        <div>
-            
+        <div className='gpt3__navbar'>
+            <div className="gpt3__navbar-links">
+                <div className='gpt3__navbar-links_logo'>
+                    <Link to ='/'>
+                        <img src={logo} alt="logo" />
+                    </Link>
+                </div>
+                <div className='gpt3__navbar-links_logo'>
+                    <Link to ='/home'>
+                        <button>HOME</button>
+                    </Link>
+                    <Link to='/pokemons'>
+                        Create Pokemon
+                    </Link>
+                </div>
+            </div>
         </div>
     )
 }

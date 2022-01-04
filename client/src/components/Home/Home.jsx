@@ -22,6 +22,7 @@ import Pages from './pages/Pages';
 import SearchBar from '../SearchBar/SearchBar';
 // --- CSS
 import './home.css'
+import NavBar from '../NavBar/NavBar';
 
 const Home = () =>{
     
@@ -83,7 +84,7 @@ const Home = () =>{
     // console.log(currentPokemons);
     return(
         <div>
-            <Link to='/pokemons'>Create Pokemon</Link>
+            <NavBar />
             <h1>Pokemons</h1>
             <div>
                 <SearchBar/>
