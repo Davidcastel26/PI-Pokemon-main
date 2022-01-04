@@ -118,7 +118,6 @@ const CharacterCreate = () => {
 
     return (
         <div>
-            <NavBar />
             <h1>Start with this adventure</h1>
             <h3>Lets create your own Pokemon</h3>
             <form action="" onSubmit={e => handleSubmit(e)}>

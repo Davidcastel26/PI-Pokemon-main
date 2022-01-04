@@ -84,7 +84,6 @@ const Home = () =>{
     // console.log(currentPokemons);
     return(
         <div>
-            <NavBar />
             <h1>Pokemons</h1>
             <div>
                 <SearchBar/>
