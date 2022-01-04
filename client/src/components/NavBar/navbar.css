@@ -1,9 +1,25 @@
+
 .gpt3__navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 2rem 6rem;
+
+
+        /* ff 3.6+ */
+        background:-moz-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+      
+        /* safari 5.1+,chrome 10+ */
+        background:-webkit-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+      
+        /* opera 11.10+ */
+        background:-o-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+      
+        /* ie 10+ */
+        background:-ms-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+      
+        /* global 92%+ browsers support */
+        background:radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
 
 }
 
@@ -41,8 +57,3 @@
     cursor: pointer;
 }
 
-.gpt3__navbar-links_container button{
-    padding: 0.5rem 1rem;
-    left: 1153px;
-    top: 55px;
-}
