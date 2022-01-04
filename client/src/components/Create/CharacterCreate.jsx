@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postPokemon, getPokemonByType } from '../../actions'
 //----CSS
 import './create.css'
+import NavBar from '../NavBar/NavBar'
 
 const CharacterCreate = () => {
 
@@ -117,7 +118,7 @@ const CharacterCreate = () => {
 
     return (
         <div>
-            <Link to='/home'><button>Back</button></Link>
+            <NavBar />
             <h1>Start with this adventure</h1>
             <h3>Lets create your own Pokemon</h3>
             <form action="" onSubmit={e => handleSubmit(e)}>
