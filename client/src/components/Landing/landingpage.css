@@ -24,7 +24,7 @@
 }
 
 .container_1 button{
-    background: #5d6aca;
+    background: var(--color-btn);
     color: #fff;
     cursor: pointer;
     font-family: var(--font-family);

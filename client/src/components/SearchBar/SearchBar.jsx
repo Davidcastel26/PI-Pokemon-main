@@ -23,7 +23,7 @@ const SearchBar = () => {
     }
 
     return (
-        <div>
+        <div className='pkm__main'>
             <input 
                 type="text"
                 placeholder='Search' 

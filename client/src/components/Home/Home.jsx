@@ -22,7 +22,6 @@ import Pages from './pages/Pages';
 import SearchBar from '../SearchBar/SearchBar';
 // --- CSS
 import './home.css'
-import NavBar from '../NavBar/NavBar';
 
 const Home = () =>{
     
@@ -83,10 +82,13 @@ const Home = () =>{
     // console.log(funcionExe());
     // console.log(currentPokemons);
     return(
-        <div>
-            <h1>Pokemons</h1>
-            <div>
+        <div className='mian_container'>
+            <div className="container__1_header">
+                <h1>Pokemons</h1>
                 <SearchBar/>
+            </div>
+            <div>
+                
                 <Pages 
                     pokemonsPerPage={pokemonsPerPage}
                     allCharacters={allCharacters.length}
@@ -101,17 +103,19 @@ const Home = () =>{
                 <button onClick={e=> handleClick(e)}>
                     reload all the pokemons
                 </button>
+                <div className='cards'>
                 {
                     currentPokemons?.map(e => {
                         return(
                             <Fragment key={e.id}>
                                 <Link to ={`/home/${e.id}`} key={e.id}>
-                                    <Card name={e.name} img={e.img ? e.img : <img src="https://www.pngfind.com/pngs/m/59-590892_pokemon-silhouettes-guess-the-pokemon-pikachu-hd-png.png"/>} type={e.type} attack={e.attack} hp={e.hp} defense={e.defense} speed={e.speed} heigth={e.heigth} weight={e.weight} />
+                                    <Card name={e.name} img={e.img ? e.img : <img src="https://www.pngfind.com/pngs/m/59-590892_pokemon-silhouettes-guess-the-pokemon-pikachu-hd-png.png"/>} type={e.type} attack={e.attack} hp={e.hp} />
                                 </Link>
                             </Fragment>
                         )
                     })
                 }
+                </div>
             </div>
         </div>
     )
