@@ -18,8 +18,10 @@ import getCharacter,
 //importing all the components 
 import Card from './Card/Card';
 import BtnsFilter from './BtnFil/BtnsFilter';
-import Pages from './Pages';
+import Pages from './pages/Pages';
 import SearchBar from '../SearchBar/SearchBar';
+// --- CSS
+import './home.css'
 
 const Home = () =>{
     
