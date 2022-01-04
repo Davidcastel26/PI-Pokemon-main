@@ -16,8 +16,8 @@ import getCharacter,
          filterByTypes
         } from '../../actions';
 //importing all the components 
-import Card from './Card';
-import BtnsFilter from './BtnsFilter';
+import Card from './Card/Card';
+import BtnsFilter from './BtnFil/BtnsFilter';
 import Pages from './Pages';
 import SearchBar from '../SearchBar/SearchBar';
 

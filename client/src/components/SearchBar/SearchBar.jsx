@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { useDispatch  } from 'react-redux';
 import {getNamePokemon} from '../../actions'
+//---- CSS
+import './searchbar.css'
 
 const SearchBar = () => {
     //hooks

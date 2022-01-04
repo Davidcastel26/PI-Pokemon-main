@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 // funcs from the action redux
 import { postPokemon, getPokemonByType } from '../../actions'
-
+//----CSS
+import './create.css'
 
 const CharacterCreate = () => {
 

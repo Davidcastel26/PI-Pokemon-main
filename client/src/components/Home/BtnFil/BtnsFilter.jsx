@@ -1,7 +1,9 @@
 import React ,{ /*Fragment */ useEffect }from 'react'
 // import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { getPokemonByType } from '../../actions'
+import { getPokemonByType } from '../../../actions'
+// --- CSS
+import './btnfil.css'
 
 function BtnsFilter(
     {

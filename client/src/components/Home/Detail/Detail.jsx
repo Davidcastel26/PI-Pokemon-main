@@ -4,6 +4,8 @@ import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 // actions redux
 import { getDetail } from '../../../actions'
+//----CSS
+import './detail.css'
 
 const Detail = () => {
 

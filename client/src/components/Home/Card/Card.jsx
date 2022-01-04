@@ -1,4 +1,6 @@
 import React from 'react'
+// --- CSS
+import './card.css'
 
 const Card = ({img, name, type, id, hp, attack, defense, speed, heigth, weight}) => {
     return (
