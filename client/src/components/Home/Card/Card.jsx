@@ -4,7 +4,7 @@ import './card.css'
 
 const Card = ({img, name, type, id, hp, attack, defense, speed, heigth, weight}) => {
     return (
-        <div >
+        <div className='card'>
             <h1>{name}</h1>
             <img src={img} alt="img not found" width='250px' height='200px' />
             <h3> type {type}</h3>

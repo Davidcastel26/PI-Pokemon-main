@@ -83,38 +83,46 @@ const Home = () =>{
     // console.log(currentPokemons);
     return(
         <div className='mian_container'>
+            
             <div className="container__1_header">
                 <h1>Pokemons</h1>
                 <SearchBar/>
             </div>
-            <div>
-                
-                <Pages 
-                    pokemonsPerPage={pokemonsPerPage}
-                    allCharacters={allCharacters.length}
-                    pages={pages}
-                />
-                <BtnsFilter 
-                    handleFilterCreOrExist={handleFilterCreOrExist}
-                    handlePokemonAttack={handlePokemonAttack}
-                    handlePokemonByName={handlePokemonByName}
-                    handleType={handleType}
-                />  
-                <button onClick={e=> handleClick(e)}>
-                    reload all the pokemons
-                </button>
-                <div className='cards'>
-                {
-                    currentPokemons?.map(e => {
-                        return(
-                            <Fragment key={e.id}>
-                                <Link to ={`/home/${e.id}`} key={e.id}>
-                                    <Card name={e.name} img={e.img ? e.img : <img src="https://www.pngfind.com/pngs/m/59-590892_pokemon-silhouettes-guess-the-pokemon-pikachu-hd-png.png"/>} type={e.type} attack={e.attack} hp={e.hp} />
-                                </Link>
-                            </Fragment>
-                        )
-                    })
-                }
+            <div >
+                <div className='container__btns'>
+                    
+                    <div className='btns_w'>
+                        <BtnsFilter 
+                            handleFilterCreOrExist={handleFilterCreOrExist}
+                            handlePokemonAttack={handlePokemonAttack}
+                            handlePokemonByName={handlePokemonByName}
+                            handleType={handleType}
+                        />  
+                        <button onClick={e=> handleClick(e)}>
+                            reload all the pokemons
+                        </button>
+                    </div>
+                </div>
+                <div className='container_c'>
+                    <div className='cards'>
+                        {currentPokemons?.map(e => {
+                            return(
+                                <Fragment key={e.id}>
+                                    <Link to ={`/home/${e.id}`} key={e. id}>
+                                        <Card name={e.name} img={e.img ? e.img : <img src="https://www.pngfind.com/pngs/m/59-590892_pokemon-silhouettes-guess-the-pokemon-pikachu-hd-png.png" alt='img suport'/>} type={e.type} attack={e.attack} hp={e.hp} />
+                                    </Link>
+                                </Fragment>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div>
+                    <Pages 
+                        pokemonsPerPage={pokemonsPerPage}
+                        allCharacters={allCharacters.length}
+                        pages={pages}
+                        currentPage={currentPage}
+                    />
                 </div>
             </div>
         </div>

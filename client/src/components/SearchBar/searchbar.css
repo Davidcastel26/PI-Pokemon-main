@@ -9,7 +9,7 @@
 .pkm__main input{
     background: var(--color-footer);
     border: 2px solid var(--color-footer);
-    min-height: 50px;
+    min-height: 25px;
     padding: 0.5 1rem;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -18,7 +18,7 @@
     font-size: 20px;
     line-height: 25px;
     outline: none;
-    width: 80% ;
+    width: 100% ;
 }
 
 .pkm__main button{
@@ -35,5 +35,5 @@
     border: 0 none;
     outline: none;
     margin-top: .8rem;
-    width: 40%;
+    width: 100%;
 }

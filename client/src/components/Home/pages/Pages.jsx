@@ -2,7 +2,7 @@ import React from 'react'
 //--- CSS
 import './pages.css'
 
-const Pages = ({pokemonsPerPage, allCharacters, pages}) => {
+const Pages = ({pokemonsPerPage, allCharacters, pages, currentPage}) => {
     
     const pageNumbers = []
 
@@ -11,19 +11,19 @@ const Pages = ({pokemonsPerPage, allCharacters, pages}) => {
     }
 
     return (
-        <nav>
+        <div className='pgs_container'>
             <ul className='pages'>
                 { pageNumbers && 
                 pageNumbers.map(number => (
-                    <li className='number' key={number}>
-                        <a onClick={() => pages(number)}>
+                <li className='number' key={number}>
+                    <a href='#top' onClick={() => pages(number)} id={(currentPage === number ? 'act':'')}>
                             {number}
-                        </a>
-                    </li>
-                    ))
+                    </a>
+                </li>
+                ))
                 }
             </ul>
-        </nav>
+        </div>
     )
 }
 
