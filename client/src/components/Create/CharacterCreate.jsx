@@ -118,6 +118,7 @@ const CharacterCreate = () => {
 
     return (
         <div>
+          <div className="contact__box_">
             <h1>Start with this adventure</h1>
             <h3>Lets create your own Pokemon</h3>
             <form action="" onSubmit={e => handleSubmit(e)}>
@@ -186,6 +187,7 @@ const CharacterCreate = () => {
                 </div>
                 {(!Object.keys(error).length && !checkInfoObj(input)) ? (<button type='submit' > <span> Create </span> </button>) : <button disabled type='submit'> <span> Create </span></button>}
             </form>
+          </div>
         </div>
     )
 }

@@ -24,7 +24,13 @@ const Detail = () => {
                 <div>
                     <h1>{myCharacter.name}</h1>
                     <img src={myCharacter.img} alt="" /> 
-                    <h2></h2>
+                    <p>{myCharacter.types} </p>
+                    <p>{myCharacter.attack}</p>
+                    <p>{myCharacter.height}</p>
+                    <p>{myCharacter.weight}</p>
+                    <p>{myCharacter.hp}</p>
+                    <p>{myCharacter.defense}</p>
+                    <p>{myCharacter.speed}</p>
                 </div> : <p>Loading</p>
             }
             <Link to='/home'>
