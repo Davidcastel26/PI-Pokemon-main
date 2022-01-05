@@ -116,13 +116,15 @@ const Home = () =>{
                         })}
                     </div>
                 </div>
-                <div>
-                    <Pages 
-                        pokemonsPerPage={pokemonsPerPage}
-                        allCharacters={allCharacters.length}
-                        pages={pages}
-                        currentPage={currentPage}
-                    />
+                <div className='container__main_p'>
+                    <div className='pages__container'>
+                        <Pages 
+                            pokemonsPerPage={pokemonsPerPage}
+                            allCharacters={allCharacters.length}
+                            pages={pages}
+                            currentPage={currentPage}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
