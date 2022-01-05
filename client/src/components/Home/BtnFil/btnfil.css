@@ -1,0 +1,20 @@
+
+select {
+    cursor: pointer;
+    /* display: inline-block; */
+    /* position: relative; */
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 18px;
+    color:var(--color-footer);
+    width: var(--select-width);
+    height: var(--select-height);
+    /* background-color: #74cf02; */
+    background-color: rgba(250, 254, 255, 0.26);
+    /* justify-content: center; */
+    /* outline: none; */
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+

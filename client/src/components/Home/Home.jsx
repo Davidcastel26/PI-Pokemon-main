@@ -92,15 +92,15 @@ const Home = () =>{
                 <div className='container__btns'>
                     
                     <div className='btns_w'>
+                        <button className='reload__btn' onClick={e=> handleClick(e)}>
+                            Reload Pokemons
+                        </button>
                         <BtnsFilter 
                             handleFilterCreOrExist={handleFilterCreOrExist}
                             handlePokemonAttack={handlePokemonAttack}
                             handlePokemonByName={handlePokemonByName}
                             handleType={handleType}
                         />  
-                        <button onClick={e=> handleClick(e)}>
-                            reload all the pokemons
-                        </button>
                     </div>
                 </div>
                 <div className='container_c'>

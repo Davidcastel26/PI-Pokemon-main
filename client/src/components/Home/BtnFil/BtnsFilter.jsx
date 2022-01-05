@@ -25,27 +25,27 @@ function BtnsFilter(
     return (
         <div>   
                 {/* showing pokemos byt asc and desc by strength */}
-                <select  onChange={ (e) => handlePokemonAttack(e)}>
-                    <option hidden>Attack</option>
+                <select id='strength__id'  onChange={ (e) => handlePokemonAttack(e)}>
+                    <option hidden> -- Attack --</option>
                     <option value= "morePowerfull"> Ascendent </option>
                     <option value="lessProwerfull" > Descend </option>
                 </select >
                 {/* showing pokemons by asc and desc by name */}
-                <select onChange={(e)=>handlePokemonByName(e)} >
-                <option hidden>Name</option>
+                <select id='name__id' onChange={(e)=>handlePokemonByName(e)} >
+                    <option hidden>-- Name --</option>
                     <option value="asc" > Ascendent </option>
                     <option value="desc" > Descend </option>
                 </select>
                 {/* showing pokemon by existing or by created */}
-                <select onChange={(e)=>handleFilterCreOrExist(e)}>
-                    <option hidden>Pokemons List</option>
+                <select id='listDB__id' onChange={(e)=>handleFilterCreOrExist(e)}>
+                    <option hidden>-- Pokemons List --</option>
                     <option value="All" > All </option>
                     <option value="Created" > Created </option>
                     <option value="Existing" > Existing </option>
                 </select>
                 {/* showing pokemons by type  */}
-                <select onChange={e => handleType(e)}>
-                    <option hidden>Types</option>
+                <select id='type__id' onChange={e => handleType(e)}>
+                    <option hidden>-- Types --</option>
                     <option value="Alls">All</option>
                     {ptypes.map( PokeType => (
                         <option key={PokeType.id} value={PokeType.name} >{PokeType.name}</option>

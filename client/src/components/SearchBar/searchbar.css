@@ -3,22 +3,24 @@
     /* width: 100%; */
     /* padding-right: 15rem; */
     /* margin: 2rem 0 1rem; */
-    margin-left: 15rem;
+    margin-left: 12rem;
 }
 
 .pkm__main input{
-    background: var(--color-footer);
-    border: 2px solid var(--color-footer);
+    background: rgba(16, 56, 21, 0.253);
+    border: none;
     min-height: 25px;
-    padding: 0.5 1rem;
+    padding: 0 1rem;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    color: #afb8a4;
+    color: #40576d;
+    font-weight: 550;
     font-family: var(--font-family);
     font-size: 20px;
     line-height: 25px;
     outline: none;
-    width: 100% ;
+    margin-top: .8rem;
+    /* width: 100% ; */
 }
 
 .pkm__main button{
@@ -29,11 +31,11 @@
     font-size: 18px;
     font-weight: 500;
     line-height: 25px;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border: 0 none;
     outline: none;
     margin-top: .8rem;
-    width: 100%;
+    /* width: 100%; */
 }
