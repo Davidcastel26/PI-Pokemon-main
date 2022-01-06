@@ -18,10 +18,11 @@ const Detail = () => {
     const myCharacter = useSelector(state => state.detail)
 
     return (
-        <div>   
+        <div mian_container>   
+
             {
              myCharacter ? 
-                <div>
+                <div className='card__main'>
                     <h1>{myCharacter.name}</h1>
                     <img src={myCharacter.img} alt="" /> 
                     <p>{myCharacter.types} </p>
@@ -33,9 +34,7 @@ const Detail = () => {
                     <p>{myCharacter.speed}</p>
                 </div> : <p>Loading</p>
             }
-            <Link to='/home'>
-                <button>Back</button>
-            </Link>
+            
         </div>
     )
 }

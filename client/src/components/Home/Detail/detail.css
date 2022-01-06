@@ -1,0 +1,33 @@
+.mian_container{
+    /* ff 3.6+ */
+    background:-moz-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+      
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+  
+    /* opera 11.10+ */
+    background:-o-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+  
+    /* ie 10+ */
+    background:-ms-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+  
+    /* global 92%+ browsers support */
+    background:radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+}
+
+.card__main{
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.596);
+    transition: background 0.8s;
+    align-items: center;
+    text-transform: uppercase;
+    overflow: hidden;
+    width: 600px;
+    /* align-items: center; */
+    /* flex: 1; */
+}
