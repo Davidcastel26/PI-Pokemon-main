@@ -108,7 +108,7 @@ const Home = () =>{
                         {currentPokemons?.map(e => {
                             return(
                                 <Fragment key={e.id}>
-                                    <Link to ={`/home/${e.id}`} key={e. id}>
+                                    <Link to ={`/home/${e.id}`} key={e.id}>
                                         <Card name={e.name} img={e.img ? e.img : <img src="https://www.pngfind.com/pngs/m/59-590892_pokemon-silhouettes-guess-the-pokemon-pikachu-hd-png.png" alt='img suport'/>} type={e.type} attack={e.attack} hp={e.hp} />
                                     </Link>
                                 </Fragment>

@@ -3,7 +3,7 @@
 :root {
   --font-family: 'Manrope', sans-serif;
 
-  --gradient-text: linear-gradient(89.97deg, rgb(173, 102, 250) 1.84%, rgb(244, 152, 103) 102.67%);
+  --gradient-text: linear-gradient(89.97deg, rgb(235, 215, 32) 1.84%, rgb(224, 93, 191) 102.67%);
   --gradient-bar: linear-gradient(103.22deg, #AE67FA -13.86%, rgb(244, 152, 102) 99.55%);
   
   --color-bg: #04180c;
@@ -20,3 +20,10 @@
   --select-width: 200px;
   --select-height: 40px;
 } 
+
+
+/* 
+types:[pison,grass]
+pokemon.types.map(e => e).join(', ')
+
+*/

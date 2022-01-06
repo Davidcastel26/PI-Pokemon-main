@@ -18,23 +18,39 @@ const Detail = () => {
     const myCharacter = useSelector(state => state.detail)
 
     return (
-        <div mian_container>   
-
+        <div className="mian_container__detail">   
+            <div className="m_conta_desing">
             {
              myCharacter ? 
-                <div className='card__main'>
-                    <h1>{myCharacter.name}</h1>
+                <div className='card__main__detail'>
+                    <div className='first_container_1_d'>
+                        <h1>{myCharacter.name}</h1>
+                        <div className='inside_first_container_1_d'>
+                            <h4>TYPES</h4>
+                            <p>{myCharacter.types}</p>
+                        </div>
+                    </div>
                     <img src={myCharacter.img} alt="" /> 
-                    <p>{myCharacter.types} </p>
-                    <p>{myCharacter.attack}</p>
-                    <p>{myCharacter.height}</p>
-                    <p>{myCharacter.weight}</p>
-                    <p>{myCharacter.hp}</p>
-                    <p>{myCharacter.defense}</p>
-                    <p>{myCharacter.speed}</p>
+                    <div className='info__details_card__'>
+                    {/* <ul> */}
+                        {/* <li> */}
+                            <p> attack {myCharacter.attack}</p>
+                        {/* </li><li> */}
+                            <p> height {myCharacter.height}</p>
+                        {/* </li><li> */}
+                            <p>weight {myCharacter.weight}</p>
+                        {/* </li><li> */}
+                            <p>health {myCharacter.hp}</p>
+                        {/* </li><li> */}
+                            <p>defense {myCharacter.defense}</p>
+                        {/* </li><li> */}
+                            <p>speed {myCharacter.speed}</p>
+                        {/* </li> */}
+                    {/* </ul> */}
+                    </div>
                 </div> : <p>Loading</p>
             }
-            
+            </div>
         </div>
     )
 }
