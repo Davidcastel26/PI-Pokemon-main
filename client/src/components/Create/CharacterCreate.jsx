@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postPokemon, getPokemonByType } from '../../actions'
 //----CSS
 import './create.css'
-import NavBar from '../NavBar/NavBar'
+import ash from '../../imgs/ASH.png'
+// import NavBar from '../NavBar/NavBar'
 
 const CharacterCreate = () => {
 
@@ -117,50 +118,55 @@ const CharacterCreate = () => {
     }
 
     return (
-        <div>
-          <div className="contact__box_">
+        <div className='container__main_'>
+            
+         <div className="contact__box_">
+          <div className="container__left__img">
+              <img src={ash} alt="" />
+          </div>
+          <div className="container__right__text">
             <h1>Start with this adventure</h1>
             <h3>Lets create your own Pokemon</h3>
             <form action="" onSubmit={e => handleSubmit(e)}>
                 <div>
-                    <label htmlFor="">Name</label>
-                    <input type="text"  value={input.name} name='name' onChange={e => handleChnage(e)}/>
+                    {/* <label htmlFor="">Name</label> */}
+                    <input type="text" placeholder='Name' value={input.name} name='name' onChange={e => handleChnage(e)}/>
                     {error.name && (<p>{error.name}</p>)}
                 </div>
                 <div>
-                    <label htmlFor="">HP</label>
-                    <input type="number"  value={input.hp} name='hp' onChange={e => handleChnage(e)}/>
+                    {/* <label htmlFor="">HP</label> */}
+                    <input type="number" placeholder='HP / life points' value={input.hp} name='hp' onChange={e => handleChnage(e)}/>
                     { error.hp && ( <p>{error.hp}</p>)}
                 </div>
                 <div>
-                    <label htmlFor="">Attack</label>
-                    <input type="number"  value={input.attack} name='attack' onChange={e => handleChnage(e)}/>
+                    {/* <label htmlFor="">Attack</label> */}
+                    <input type="number" placeholder='Attack' value={input.attack} name='attack' onChange={e => handleChnage(e)}/>
                     { error.hp && ( <p>{error.hp}</p>)}
                 </div>
                 <div>
-                    <label htmlFor="">Defense</label>
-                    <input type="number"  value={input.defense} name='defense' onChange={e => handleChnage(e)}/>
+                    {/* <label htmlFor="">Defense</label> */}
+                    <input type="number" placeholder='Defense' value={input.defense} name='defense' onChange={e => handleChnage(e)}/>
                     { error.hp && ( <p>{error.hp}</p>)}
                 </div>
                 <div>
-                    <label htmlFor="">Speed</label>
-                    <input type="number"  value={input.speed} name='speed' onChange={e => handleChnage(e)}/>
+                    {/* <label htmlFor="">Speed</label> */}
+                    <input type="number" placeholder='Speed' value={input.speed} name='speed' onChange={e => handleChnage(e)}/>
                     { error.speed && ( <p>{error.speed}</p>)}
                 </div>
                 <div>
-                    <label htmlFor="">Height</label>
-                    <input type="number"  value={input.height} name='height' onChange={e => handleChnage(e)}/>
+                    {/* <label htmlFor="">Height</label> */}
+                    <input type="number" placeholder='Height' value={input.height} name='height' onChange={e => handleChnage(e)}/>
                     { error.height && ( <p>{error.height}</p>)}
                 </div>
                 <div>
-                    <label htmlFor="">Weight</label>
-                    <input type="number"  value={input.weight} name='weight' onChange={e => handleChnage(e)}/>
+                    {/* <label htmlFor="">Weight</label> */}
+                    <input type="number" placeholder='Weight' value={input.weight} name='weight' onChange={e => handleChnage(e)}/>
                     { error.weight && ( <p>{error.weight}</p>)}
                     
                 </div>
                 <div>
-                    <label htmlFor="">Image</label>
-                    <input type="text" value={input.img} name='img' onChange={e => handleChnage(e)}/>
+                    {/* <label htmlFor="">Image</label> */}
+                    <input type="text" placeholder='IMG URL' value={input.img} name='img' onChange={e => handleChnage(e)}/>
                     { error.img && ( <p>{error.img}</p>)}
                 </div>
                 <div>
@@ -187,6 +193,7 @@ const CharacterCreate = () => {
                 </div>
                 {(!Object.keys(error).length && !checkInfoObj(input)) ? (<button type='submit' > <span> Create </span> </button>) : <button disabled type='submit'> <span> Create </span></button>}
             </form>
+           </div>
           </div>
         </div>
     )

@@ -1,0 +1,73 @@
+.container__main_{
+    font-family: var(--font-family);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20px 100px;
+ 
+}
+
+.container__main_::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+  
+    /* opera 11.10+ */
+    background:-o-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+  
+    /* ie 10+ */
+    background:-ms-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+  
+    /* global 92%+ browsers support */
+    background:radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+    
+    z-index: -1;
+    filter: blur(50px);
+}
+
+.contact__box_{
+    max-width: 850px;
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+  
+    /* opera 11.10+ */
+    background:-o-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+  
+    /* ie 10+ */
+    background:-ms-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+  
+    /* global 92%+ browsers support */
+    background:radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+}
+
+.container__left__img{
+    height: 100%;
+    background:-moz-radial-gradient(circle at 3% 25%, rgba(116, 207, 2, 1) 0%, rgba(0, 188, 212, 1) 89%);
+      
+    background: url("../../imgs/fondo1.jpg") no-repeat center;
+    background-size: cover;
+    /* background: url("../../imgs/fondo1.jpg") no-repeat center; */
+    /* background-size: cover; */
+    filter: blur(20px);
+}
+
+.container__left__img img{
+    margin-top: 4rem;
+    width: 200px;
+    /* filter: none; */
+}
+
+.container__right__text{
+    
+}
