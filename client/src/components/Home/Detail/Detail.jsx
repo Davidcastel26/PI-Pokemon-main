@@ -1,6 +1,6 @@
 //hooks
 import {/*useState,*/ useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom'
+import {/* Link, */ useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 // actions redux
 import { getDetail } from '../../../actions'
@@ -16,7 +16,7 @@ const Detail = () => {
     },[dispatch])
 
     const myCharacter = useSelector(state => state.detail)
-
+    // console.log(myCharacter);
     return (
         <div className="mian_container__detail">   
             <div className="m_conta_desing">
@@ -27,6 +27,8 @@ const Detail = () => {
                         <h1>{myCharacter.name}</h1>
                         <div className='inside_first_container_1_d'>
                             <h4>TYPES</h4>
+                            {/* <p>{myCharacter.types.map((e)=>e).join(', ')}</p> */}
+                            {/* <p>{myCharacter.types.join(', ')}</p> */}
                             <p>{myCharacter.types}</p>
                         </div>
                     </div>

@@ -28,7 +28,7 @@ function BtnsFilter(
                 <select id='strength__id'  onChange={ (e) => handlePokemonAttack(e)}>
                     <option hidden> -- Attack --</option>
                     <option value= "morePowerfull"> Ascendent </option>
-                    <option value="lessProwerfull" > Descend </option>
+                    <option value="lessPowerfull" > Descend </option>
                 </select >
                 {/* showing pokemons by asc and desc by name */}
                 <select id='name__id' onChange={(e)=>handlePokemonByName(e)} >

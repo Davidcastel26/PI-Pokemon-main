@@ -3,6 +3,31 @@ const axios = require('axios')
 // const { response } = require('har-validator')
 const { Pokemon, Type } = require('./db')
 
+const pageHandler = async (next) => {
+    try {
+        let firstPage = [], secondPage = [], thirdPage = []
+        firstPage = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
+        let urlNext = firstPage.data.next
+        //i have to match it, to have the variable with data and the use it
+        firstPage = [...firstPage.data.results]
+        // console.log();
+        // continue with second page getting urlNext from first page
+        secondPage = await axios.get(urlNext)
+        urlNext = secondPage.data.next
+        secondPage = [...secondPage.data.results]
+        // third page 
+        thirdPage = await axios.get(urlNext)
+        thirdPage = [...thirdPage.data.results]
+        return [...firstPage, ...secondPage, ...thirdPage]
+        // const results =  [...firstPage, ...secondPage, ...thirdPage]
+        // return results
+    } catch (error) {
+        // pass a parameter handler error
+        next(error)
+    }
+}
+
+console.log(pageHandler());
 
 // we are fetching the info from the poke api
 const getPokemonFromApi = async () => {
@@ -11,8 +36,9 @@ const getPokemonFromApi = async () => {
         let info = [];
         for (let i = 1; i <= 40; i++) {
             // saving the urls into the array and FETCHING every single url
-            info.push(axios.get('https://pokeapi.co/api/v2/pokemon/' + i));
+            info.push(await axios.get(`https://pokeapi.co/api/v2/pokemon/` + i));
         }
+        console.log(info);
         //since we are calling the urls into the array as a fetch we are calling all the porimises
         //we need to use .then in order to get the info
         return Promise.all(info).then((response) => {
@@ -23,7 +49,7 @@ const getPokemonFromApi = async () => {
                     name: details.data.name,
                     id: details.data.id,
                     img: details.data.sprites.other.home.front_default,
-                    types: details.data.types.map((e) => e.type.name),
+                    types: details.data.types.map((e) => e.type.name).join(', '),
                     attack: details.data.stats[1].base_stat,
                     height: details.data.height,
                     weight: details.data.weight,
@@ -128,7 +154,7 @@ const getPokemonById = async(req, res, next) =>{
                     name: details.name,
                     id: details.id,
                     img: details.sprites.other.home.front_default,
-                    types: details.types.map((e) => e.type.name),
+                    types: details.types.map((e) => e.type.name).join(', '),
                     attack: details.stats[1].base_stat,
                     height: details.height,
                     weight: details.weight,
@@ -146,7 +172,7 @@ const getPokemonById = async(req, res, next) =>{
 }
 
 const createAPokemon = async (req, res, next) => {
-    const { name, hp, attack, defense, speed, height, weight, img} = req.body;
+    const { name, hp, attack, defense, speed, height, weight, img, types} = req.body;
     try {
         const newPokemon = await Pokemon.create({
             name,
@@ -156,8 +182,16 @@ const createAPokemon = async (req, res, next) => {
             speed,
             height,
             weight,
-            img
+            img,
         })
+        types?.map(async(type)=> {
+            let poke_t = await Type.findAll(
+                    {
+                        where:{name:type}
+                    }
+            )
+            newPokemon.addType(poke_t)
+        }) 
         res.status(201).send(newPokemon)
     } catch (error) {
         next(error);
@@ -266,6 +300,9 @@ const getAllthePokemons = async(req, res, next) => {
 
     })
 }
+
+
+------------------------------GOOD CODE JUST WAITING FOR THE UPDATE ------------
 
 
 */

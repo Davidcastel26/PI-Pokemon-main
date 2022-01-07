@@ -22,6 +22,7 @@ import Pages from './pages/Pages';
 import SearchBar from '../SearchBar/SearchBar';
 // --- CSS
 import './home.css'
+import Unknowimg from '../../imgs/unknowimg.png'
 
 const Home = () =>{
     
@@ -47,7 +48,7 @@ const Home = () =>{
 
     const handleClick = ( e ) =>{
         e.preventDefault();
-        dispatch(getCharacter)
+        dispatch(getCharacter())
     }
 
     const handleFilterCreOrExist = (e) =>{
@@ -74,11 +75,12 @@ const Home = () =>{
         setCurrentPage(1);
         setOrder(`Order ${e.target.value}`)
     }
-
+    /*
     const funcionExe = () =>{
         let varialbeXDpapa =currentPokemons.map(ele => ele.attack)
         return varialbeXDpapa
     }
+    */
     // console.log(funcionExe());
     // console.log(currentPokemons);
     return(
@@ -92,8 +94,8 @@ const Home = () =>{
                 <div className='container__btns'>
                     
                     <div className='btns_w'>
-                        <button className='reload__btn' onClick={e=> handleClick(e)}>
-                            Reload Pokemons
+                        <button className='reload__btn' onClick={(e)=>handleClick(e)} >
+                            Select Pokemons
                         </button>
                         <BtnsFilter 
                             handleFilterCreOrExist={handleFilterCreOrExist}
@@ -109,7 +111,12 @@ const Home = () =>{
                             return(
                                 <Fragment key={e.id}>
                                     <Link to ={`/home/${e.id}`} key={e.id}>
-                                        <Card name={e.name} img={e.img ? e.img : <img src="https://www.pngfind.com/pngs/m/59-590892_pokemon-silhouettes-guess-the-pokemon-pikachu-hd-png.png" alt='img suport'/>} type={e.type} attack={e.attack} hp={e.hp} />
+                                        <Card 
+                                            name={e.name} 
+                                            img={e.img ? e.img : <img src={Unknowimg} alt='img suport'/>} 
+                                            type={e.types} 
+                                            attack={e.attack} 
+                                            hp={e.hp} />
                                     </Link>
                                 </Fragment>
                             )

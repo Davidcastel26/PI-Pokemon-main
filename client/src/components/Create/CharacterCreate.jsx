@@ -1,6 +1,6 @@
 // hooks from react 
 import {useState, useEffect} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { /*Link, */ useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 // funcs from the action redux
 import { postPokemon, getPokemonByType } from '../../actions'

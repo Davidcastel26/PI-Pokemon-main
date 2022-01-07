@@ -51,18 +51,19 @@ const rootReducer = (state = initialState, action) =>{
             // const statusFilter = action.payload === 'All' ? allPokemons : allPokemons.filter(el => el.attack === action.payload)
             let sortByStrnght;
 
-            if(action.payload === 'morePowerfull'){
-                console.log(state.characters);
+            if(action.payload === 'lessPowerfull'){
+                // console.log(state.characters);
 
                 sortByStrnght = state.characters.sort((a,b) => {
                     if(a.attack > b.attack) return 1; /* console.log(a.attack);*/ 
                     if(b.attack > a.attack) return -1;
                     return 0
                 })
-            }else if(action.payload === 'lessProwerfull'){
-                console.log(state.characters);
+            }else if(action.payload === 'morePowerfull'){
+                // console.log(state.characters);
                 sortByStrnght = state.characters.sort((a,b) => {
-                    if(a.attack < b.attack) return -1
+                    if(a.attack < b.attack) return 1
+                    if(b.attack < a.attack) return -1;
                     return 0
                 })
             }
@@ -82,6 +83,9 @@ const rootReducer = (state = initialState, action) =>{
             let filterCE;
 
             switch(action.payload){
+                case 'All':
+                    filterCE = state.AllCopyPokemons
+                break;
                 case 'Created':
                     filterCE = state.AllCopyPokemons.filter(ele => ele.id.length > 8)
                 break;
@@ -94,13 +98,16 @@ const rootReducer = (state = initialState, action) =>{
 
             return{
                 ...state,
-                characters : action.payload === 'All' ? state.characters : filterCE
+                characters : filterCE
             }
         // this is the reducer to get sac or desc by name-------------------
         case 'FILTER_BY_NAME':
             var sortByNmae;
             
             switch(action.payload){
+                case 'NORMAL':
+                    sortByNmae = state.AllCopyPokemons
+                break;
                 case 'asc':
                     sortByNmae = state.characters.sort((a,b)=>{
                         if(a.name > b.name) return 1;
@@ -131,7 +138,7 @@ const rootReducer = (state = initialState, action) =>{
                 detail: action.payload
             }
         default:
-            return {...state}
+            return state
     }
 }
 
