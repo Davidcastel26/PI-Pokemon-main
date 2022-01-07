@@ -33,11 +33,13 @@ const Home = () =>{
     const [currentPage, setCurrentPage] = useState(1);
     const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
 
-
+    console.log(allCharacters);
     const indexOfLastPokemon = currentPage * pokemonsPerPage // 
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
+    //slice will devide all the array by indexes
     const currentPokemons = allCharacters.slice(indexOfFirstPokemon, indexOfLastPokemon )
 
+    
     const pages = (pageNumber) =>{
         setCurrentPage(pageNumber)
     }

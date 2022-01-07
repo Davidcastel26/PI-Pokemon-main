@@ -1,8 +1,9 @@
 const {Router} = require('express');
 const router = Router();
 const { 
+        getAllthePokemons,
         getPokemonById, 
-        getAllthePokemons, 
+        getPokemonsByName, 
         createAPokemon,
         createRelation,
         /*deletePokemon,
@@ -15,7 +16,8 @@ router.get('/:id', getPokemonById)
 
 router.post('/', createAPokemon)
 
-router.post('/:pokemonId/type/:typeId', createRelation )
+// router.get('name', getPokemonsByName)
+
 /*
 router.put('/',upgratePokemon )
 
@@ -23,17 +25,3 @@ router.delete('/', deletePokemon)
 */
 
 module.exports = router;
-
-/*
-router.get('/', (req, res, next) => {
-    return Pokemon.findAll({
-        include: Type
-    })
-    .then((Pokemon )=>{
-        res.send(Pokemon)
-    })
-    .catch((error) => {
-        next(error)
-    })
-})
-*/

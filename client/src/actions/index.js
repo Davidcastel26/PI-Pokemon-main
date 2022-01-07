@@ -14,8 +14,12 @@ const getCharacter = () =>{
 
 export const getNamePokemon = (payload) => {
     return async function (dispatch) {
+        
         try {
+            // console.log(`payload holi ${payload}` );
             const json = await axios.get(`http://localhost:3001/api/pokemon?name=${payload}`)
+            // console.log(json);
+
             return dispatch({
                 type:'GET_NAME_POKEMON',
                 payload: json.data
@@ -101,3 +105,23 @@ export const getDetail =  ( id ) => {
 }
 
 export default getCharacter;
+
+
+/*
+---------------------BACKUP---------------
+
+////////////GET POKEMON BY NAME //////////////
+export const getNamePokemon = (payload) => {
+    return async function (dispatch) {
+        try {
+            const json = await axios.get(`http://localhost:3001/api/pokemon?name=${payload}`)
+            return dispatch({
+                type:'GET_NAME_POKEMON',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error);   
+        }
+    }
+}
+*/
