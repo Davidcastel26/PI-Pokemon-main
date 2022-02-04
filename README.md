@@ -6,7 +6,7 @@
 
 ## The project was build with:
 
-- React, Redux, Node y Sequelize.
+- React, Redux, Node JS, Express y Sequelize.
 
 ---
 
