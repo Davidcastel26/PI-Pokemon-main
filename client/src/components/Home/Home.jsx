@@ -30,9 +30,9 @@ const Home = () =>{
     //hooks
     const dispatch = useDispatch();
     const allCharacters = useSelector((state) => state.characters)
-    const [order, setOrder] = useState('')
+    const [ setOrder ] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
-    const [pokemonsPerPage, setPokemonsPerPage] = useState(9);
+    const [pokemonsPerPage] = useState(9);
 
     // console.log(allCharacters);
 
