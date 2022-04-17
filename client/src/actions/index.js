@@ -35,6 +35,7 @@ export const getPokemonByType = () =>{
     return async function(dispatch) {
         try {
             const type = await axios.get(`http://localhost:3001/api/types`)
+            // console.log();
             return dispatch({
                 type:'GET_TYPE',
                 payload: type.data

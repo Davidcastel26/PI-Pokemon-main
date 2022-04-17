@@ -282,14 +282,15 @@ const createAPokemon = async (req, res, next) => {
             weight,
             img,
         })
+        // types : []
         //if there are types loop into it
-        types?.map(async (type) => {
+        types?.map(async (types) => {
             //searching using squelized
             //types is an arrar
             //findaLL will return the same value from the table types
             let poke_t = await Type.findAll(
                 {
-                    where: { name: type } // name : grass
+                    where: { name: types } // name : grass
                 }
             )
             //relation with the pokemon that we are creating

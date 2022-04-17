@@ -13,7 +13,8 @@ import getCharacter,
          filterPokemonByCreatedOrExisted,
          filterPokemonByStrength,
          filterPokemonByName,
-         filterByTypes
+         filterByTypes,
+         
         } from '../../actions';
 //importing all the components 
 import Card from './Card/Card';
@@ -31,9 +32,10 @@ const Home = () =>{
     const allCharacters = useSelector((state) => state.characters)
     const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
-    const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
+    const [pokemonsPerPage, setPokemonsPerPage] = useState(9);
 
-    console.log(allCharacters);
+    // console.log(allCharacters);
+
     const indexOfLastPokemon = currentPage * pokemonsPerPage // 
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
     //slice will devide all the array by indexes
@@ -59,8 +61,11 @@ const Home = () =>{
 
     const handlePokemonAttack = (e) => {
         e.preventDefault();
+        // geting the value from the select
         dispatch(filterPokemonByStrength(e.target.value))
+        //give us as first page the new sort
         setCurrentPage(1);
+        //will show the pokemons in that order
         setOrder(`Order ${e.target.value}`)
     }
 
@@ -104,6 +109,7 @@ const Home = () =>{
                             handlePokemonAttack={handlePokemonAttack}
                             handlePokemonByName={handlePokemonByName}
                             handleType={handleType}
+                        
                         />  
                     </div>
                 </div>
@@ -116,7 +122,7 @@ const Home = () =>{
                                         <Card 
                                             name={e.name} 
                                             img={e.img ? e.img : <img src={Unknowimg} alt='img suport'/>} 
-                                            type={e.types} 
+                                            type={typeof e.types === 'object' ? e.types.join(', '): e.types} 
                                             attack={e.attack} 
                                             hp={e.hp} />
                                     </Link>

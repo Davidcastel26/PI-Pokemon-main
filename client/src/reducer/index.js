@@ -40,8 +40,6 @@ const rootReducer = (state = initialState, action) =>{
         case 'TYPE':
             let copyPoke = state.AllCopyPokemons;
             let type_filter = action.payload === 'Alls' ? copyPoke : copyPoke.filter(e => e.types.includes(action.payload))
-            
-
             return{
                 ...state,
                 characters: type_filter
@@ -67,16 +65,12 @@ const rootReducer = (state = initialState, action) =>{
                     return 0
                 })
             }
-
-
             // if(action.payload === 'morePowerfull'){
             //     sortByStrnght = state.AllCopyPokemons.filter(ele => ele.id.length > 8)
             // }
-
             return{
                ...state,
                characters: sortByStrnght
-
             }
         // this is the reducer to get sac or desc by created or existed-------------------
         case 'FILTER_BY_CREATEDOREXISTED':

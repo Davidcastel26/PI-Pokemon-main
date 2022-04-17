@@ -10,7 +10,8 @@ function BtnsFilter(
      handleFilterCreOrExist,
      handlePokemonAttack,
      handlePokemonByName,
-     handleType
+     handleType,
+     
     }) 
 {   
 
