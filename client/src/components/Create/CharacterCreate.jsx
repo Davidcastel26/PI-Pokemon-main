@@ -30,13 +30,13 @@ const CharacterCreate = () => {
 
     useEffect( () => {
         dispatch(getPokemonByType())
-    },[]);
+    },[dispatch]);
 
     //---------- FORM CONTROLLER ----------------------
 
     const checkInfoObj = obj => {
         for( let e in obj){
-            if(obj[e] !== null && obj[e] != "") return false;
+            if(obj[e] !== null && obj[e] !== "") return false;
         }
         return true;
     }
