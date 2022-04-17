@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 //--- CSS
 import './navbar.css'
-import {RiMenu3Line, RiCloseLin} from 'react-icons/ri';
+// import {RiMenu3Line, RiCloseLin} from 'react-icons/ri';
 import logo from '../../imgs/logo.svg'
 // BEM -> Block Element Modifier
 
