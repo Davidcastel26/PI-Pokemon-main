@@ -8,7 +8,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) =>{
     
-    const allPokemons = state.characters
+    // const allPokemons = state.characters
     
     switch(action.type){
         case 'GET_CHARACTERS':
