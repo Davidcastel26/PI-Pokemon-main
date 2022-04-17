@@ -11,9 +11,10 @@ const Detail = () => {
 
     const dispatch = useDispatch();
     const {id} = useParams()
+
     useEffect(()=>{
         dispatch(getDetail(id))
-    },[dispatch])
+    },[dispatch, id])
 
     const myCharacter = useSelector(state => state.detail)
     // console.log(myCharacter);
