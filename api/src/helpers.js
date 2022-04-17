@@ -8,7 +8,7 @@ const { Pokemon, Type } = require('./db')
 const getPokemonFromApi = async () => {
     try {
         //setting an array in order to be ablee to save all the url from the api
-        const poke_res = (await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=50`)).data.results
+        const poke_res = (await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=25`)).data.results
         let info = [];
         // for (let i = 1; i <= 40; i++) {
         //     // saving the urls into the array and FETCHING every single url
