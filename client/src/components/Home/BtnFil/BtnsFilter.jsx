@@ -19,7 +19,7 @@ function BtnsFilter(
     
     useEffect( () =>{
         dispatch(getPokemonByType())
-    },[] )
+    },[dispatch] )
     
     const ptypes = useSelector(state => state.pokemonsTypes);
     // console.log(ptypes);
