@@ -9,11 +9,14 @@ const NavBar = () => {
     return (
         <div className='gpt3__navbar'>
             <div className="gpt3__navbar-links">
+                
                 <div className='gpt3__navbar-links_logo'>
                     <Link to ='/'>
                         <img src={logo} alt="logo" />
                     </Link>
                 </div>
+
+
                 <div className='navbar-links_container'>
                     <Link to ='/'>
                         <p>Home</p>
@@ -25,6 +28,8 @@ const NavBar = () => {
                       <p>Create Pokemon</p>  
                     </Link>
                 </div>
+
+                
             </div>
         </div>
     )
