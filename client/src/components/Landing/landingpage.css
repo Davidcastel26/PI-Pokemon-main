@@ -43,3 +43,29 @@
     height: 606px;
     width: 900px;
 }
+
+@media screen and (min-width: 600px) {
+
+
+    .gradient__bg{
+        display: flex;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        flex-direction: column-reverse;
+    }
+
+    .container_2 img{
+        height: 438px;
+        width: 540px;
+    }
+
+    .container_1 h1{
+        font-weight: 700;
+    font-size: 38px;
+    line-height: 0px;
+    }
+
+    .container_1 button{
+        margin-bottom: 3rem;
+    }
+}
