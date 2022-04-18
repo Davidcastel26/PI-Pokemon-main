@@ -1,5 +1,7 @@
 .gradient__bg{
     display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
     padding-left: 5rem;
     padding-right: 5rem;
 
@@ -9,8 +11,8 @@
     font-family: var(--font-family);
     font-weight: 800;
     font-size: 62px;
-    line-height: 75px;
-    letter-spacing: -0.04em;
+    /* line-height: 75px; */
+    /* letter-spacing: -0.04em; */
 }
 
 .container_1 p{
@@ -44,27 +46,31 @@
     width: 900px;
 }
 
-@media screen and (min-width: 600px) {
-
+@media screen and (max-width: 425px) {
 
     .gradient__bg{
-        display: flex;
-        padding-left: 5rem;
-        padding-right: 5rem;
+        /* display: flex; */
+        /* padding-left: 3rem; */
+        /* padding-right: 5rem; */
+
         flex-direction: column-reverse;
     }
 
     .container_2 img{
         height: 418px;
-        width: 540px;
+        width: 490px;
         margin-bottom: 1rem;
+        padding-right: 2rem;
     }
 
     .container_1 h1{
         margin-top: 2rem;
         font-weight: 700;
-    font-size: 38px;
-    line-height: 0px;
+    font-size: 4rem;
+    /* line-height: 0px; */
+
+    /* line-height: 0; */
+    /* letter-spacing: 0; */
     }
 
     .container_1 button{
