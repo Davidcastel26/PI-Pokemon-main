@@ -29,13 +29,19 @@ const NavBar = () => {
 
         <ul className="main-menu_hbg">
           <Link to="/">
-            <li className="main-menu-hbg--item">Home</li>
+            <li className="main-menu-hbg--item">
+                <a href="#" className="menu-linkssss">Home</a>
+            </li>
           </Link>
           <Link to="/home">
-          <li className="main-menu-hbg--item">Pokemons</li> 
+            <li className="main-menu-hbg--item">
+                <a href="#" className="menu-linkssss">Pokemons</a>
+            </li>
           </Link>
           <Link to="/pokemons">
-          <li className="main-menu-hbg--item">Create Pokemon</li> 
+            <li className="main-menu-hbg--item">
+                <a href="#" className="menu-linkssss">Create Pokemon</a>
+            </li>
           </Link>
         </ul>
       </div>

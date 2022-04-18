@@ -62,9 +62,21 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 900px) {
+.main-menu_hbg{
+    display: none;
+}
+
+@media screen and (max-width: 620px) {
 
     .navbar-links_container{
         display: none;
+    }
+
+    .main-menu_hbg{
+        display: block;
+    }
+
+    .menu-linkssss {
+        text-decoration: none;
     }
 }
