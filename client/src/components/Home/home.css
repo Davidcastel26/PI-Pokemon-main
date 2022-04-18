@@ -101,3 +101,7 @@
     margin-bottom: 4rem;  
     /* justify-self: center; */
 }
+
+@media screen and (max-widht: 600px) {
+    
+}
