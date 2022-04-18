@@ -46,14 +46,9 @@
     width: 900px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
 
     .gradient__bg{
-        border-color: 1px solid #d4a600 ;
-        /* display: flex; */
-        /* padding-left: 3rem; */
-        /* padding-right: 5rem; */
-
         flex-direction: column-reverse;
     }
 
@@ -80,4 +75,12 @@
     }
 
 
+}
+
+@media screen and (min-width: 250px) {
+    .container_2 img{
+        height: 351px;
+            width: 306px;
+
+    }
 }
