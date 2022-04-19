@@ -83,16 +83,49 @@
 }    
 
 @media screen and (max-width: 660px) {
-
+    /* .gpt3__navbar{
+        display: flex;
+        flex-direction: column;
+    } */
     .navbar-links_container{
         display: none;
     }
+    .gpt3__navbar-links{
+        display: none;
+    }
+
+
+    .nav__menu{
+        background-color: #fff;
+        /* display: flex; */
+        align-items: center;
+    }
 
     .main-menu_hbg{
-        display: block;
+        text-transform: uppercase;
+        text-decoration: none;
+        list-style: none;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        flex: 1;
+
     }
 
-    .menu-linkssss {
+    .main-menu-hbg--item{
+        font-size: small;
+        padding: 1em;
+
+        margin: 0 1rem;
+        cursor: pointer;
+    
+        flex-direction: column;
+    }
+
+    .menu-links-word {
         text-decoration: none;
     }
+
 }
