@@ -11,8 +11,8 @@
     font-family: var(--font-family);
     font-weight: 800;
     font-size: 62px;
-    /* line-height: 75px; */
-    /* letter-spacing: -0.04em; */
+    line-height: 75px;
+    letter-spacing: -0.04em;
 }
 
 .container_1 p{
@@ -77,10 +77,11 @@
 
 }
 
-@media screen and (min-width: 250px) {
+@media screen and (max-width: 550px) {
     .container_2 img{
-        height: 351px;
-            width: 306px;
-
+        /* height: 351px; */
+        /* width: 306px; */
+        height: 120%;
+        width: 130%;
     }
 }
