@@ -7,7 +7,7 @@ import logo from "../../imgs/logo.svg";
 
 const NavBar = () => {
   return (
-    <div className="gpt3__navbar">
+    <nav className="app__navbar">
       <div className="gpt3__navbar-links">
         <div className="gpt3__navbar-links_logo">
           <Link to="/">
@@ -56,7 +56,7 @@ const NavBar = () => {
           </ul>
         </div>
 
-    </div>
+    </nav>
   );
 };
 
