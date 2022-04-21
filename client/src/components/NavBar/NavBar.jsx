@@ -8,14 +8,14 @@ import logo from "../../imgs/logo.svg";
 const NavBar = () => {
   return (
     <nav className="app__navbar">
-      <div className="gpt3__navbar-links">
-        <div className="gpt3__navbar-links_logo">
+      {/* <div className="app__navbar-here"> */}
+        <div className="app__navbar-logo">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
         </div>
 
-        <div className="navbar-links_container">
+        <ul className="navbar-links_container">
           <Link to="/">
             <p>Home</p>
           </Link>
@@ -25,12 +25,11 @@ const NavBar = () => {
           <Link to="/pokemons">
             <p>Create Pokemon</p>
           </Link>
-        </div>
+        </ul>
 
        
-      </div>
-
-      <div className="nav__menu">
+      {/* </div> */}
+    {/*<div className="nav__menu">
           <ul className="main-menu_hbg">
             <Link to="/">
               <li className="main-menu-hbg--item">
@@ -55,7 +54,7 @@ const NavBar = () => {
             </Link>
           </ul>
         </div>
-
+      */}
     </nav>
   );
 };
