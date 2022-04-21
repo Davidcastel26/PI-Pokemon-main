@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 //--- CSS
 // import "./navbar.css";
+import "./Navbar.scss";
 // import {RiMenu3Line, RiCloseLin} from 'react-icons/ri';
 import logo from "../../imgs/logo.svg";
 // BEM -> Block Element Modifier
@@ -15,15 +16,24 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <ul className="navbar-links_container">
+        <ul className="app__navbar-links">
           <Link to="/">
-            <p>Home</p>
+            <li>
+              <div />
+              <a href="#">Home</a>
+            </li>
           </Link>
           <Link to="/home">
-            <p>Pokemons</p>
+            <li>
+              <div />
+              <a href="#">Pokemons</a>
+              </li>
           </Link>
           <Link to="/pokemons">
-            <p>Create Pokemon</p>
+          <li>
+              <div />
+              <a href="#">Create Pokemon</a>
+          </li>    
           </Link>
         </ul>
 
